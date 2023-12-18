@@ -14,7 +14,7 @@ export const Feature = ({
         <div className="bg-card p-6 border rounded-xl flex flex-col">
             <div
                 className={cn(
-                    'self-start rounded-full w-9 h-9 flex items-center justify-center bg-foreground/5 dark:bg-foreground/10 [&>svg]:w-5 [&>svg]:h-5',
+                    'self-start rounded-full w-9 h-9 flex items-center justify-center bg-foreground/5 [&>svg]:w-5 [&>svg]:h-5',
                 )}
             >
                 {icon}

@@ -20,10 +20,12 @@
         --accent-foreground: 240 5.9% 10%;
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
+        --success: 142 76% 36%; /* added */
+        --success-foreground: 0 0% 98%; /* added (tw-green-500) */
         --border: 240 5.9% 90%;
         --input: 240 5.9% 90%;
         --ring: 240 5.9% 10%;
-        --radius: 0.75rem;
+        --radius: 0.5rem;
     }
 
     .dark {
@@ -41,8 +43,10 @@
         --muted-foreground: 240 5% 64.9%; /* modified */
         --accent: 240 3.7% 15.9%;
         --accent-foreground: 0 0% 98%;
-        --destructive: 0 62.8% 30.6%;
+        --destructive: 353 96% 82%; /* modified (tw-rose-300) */
         --destructive-foreground: 0 0% 98%;
+        --success: 142 77% 73%; /* added (tw-green-300) */
+        --success-foreground: 0 0% 98%; /* added */
         --border: 240 3.7% 15.9%;
         --input: 240 3.7% 15.9%;
         --ring: 240 4.9% 83.9%;
@@ -80,4 +84,15 @@
     .container {
         @apply h-full;
     }
+}
+
+/* https://github.com/radix-ui/primitives/issues/1925 */
+/* Radix dropdown and select elements when in opened state, add "overflow:hidden" and "margin-right" to the body */
+/* This is Radix's implementation of "Lock scroll", which I don't want */
+html {
+    overflow-y: auto !important;
+}
+
+html body {
+    margin-right: 0px !important;
 }

@@ -7,9 +7,11 @@ import { GithubIcon, MenuIcon, XIcon } from 'lucide-react'
 import { useState } from 'react'
 import { useRoutes } from '@/hooks/use-routes'
 import { MobileMenu } from './MobileMenu'
+import { AuthDropdown } from './AuthDropdown'
 
 export const Header = () => {
-    const { url } = usePage()
+    const { url, props } = usePage()
+    const { user } = props
 
     const [isMenuOpen, setMenuOpen] = useState(false)
 
@@ -69,7 +71,15 @@ export const Header = () => {
 
                         {/* buttons */}
                         <div className="hidden sm:flex items-center space-x-3">
-                            <Button size="sm">Sign In</Button>
+                            {user ? (
+                                <AuthDropdown />
+                            ) : (
+                                <Button size="sm" asChild>
+                                    <Link href={route('login.create')}>
+                                        Sign In
+                                    </Link>
+                                </Button>
+                            )}
                         </div>
                     </div>
                 </div>

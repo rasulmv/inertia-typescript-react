@@ -1,6 +1,8 @@
 import { Features } from '@/components/homepage/Features'
 import { Button } from '@/components/ui/button'
 import AppLayout from '@/layouts/AppLayout'
+import { Head } from '@inertiajs/react'
+import { ReactNode } from 'react'
 
 export default function Index() {
     return (
@@ -36,4 +38,6 @@ export default function Index() {
     )
 }
 
-Index.layout = (page: any) => <AppLayout pageTitle="Homepage" children={page} />
+Index.layout = (page: ReactNode) => (
+    <AppLayout children={page} title="Homepage" />
+)

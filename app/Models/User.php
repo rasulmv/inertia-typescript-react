@@ -18,7 +18,8 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'first_name',
+        'last_name',
         'email',
         'password',
     ];
@@ -40,6 +41,19 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
+        'password'          => 'hashed',
     ];
+
+    protected static function boot()
+    {
+        parent::boot();
+
+        static::creating(
+            function ($user) {
+                // Fix casing when saving user's first and last name
+                $user->first_name = str()->title($user->first_name);
+                $user->last_name = str()->title($user->last_name);
+            }
+        );
+    }
 }
