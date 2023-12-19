@@ -4,11 +4,13 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { getNameInitialsForAvatar } from '@/lib/utils'
 import { Link, router, usePage } from '@inertiajs/react'
-import { ChevronDownIcon, LogOutIcon, UserIcon } from 'lucide-react'
-import { Button } from '../ui/button'
+import { LogOutIcon, UserIcon } from 'lucide-react'
 import { useState } from 'react'
-import { cn } from '@/lib/utils'
+import { Avatar, AvatarFallback } from '../ui/avatar'
+import { Button } from '../ui/button'
+import { Separator } from '../ui/separator'
 
 export const AuthDropdown = () => {
     const { user } = usePage().props
@@ -17,38 +19,50 @@ export const AuthDropdown = () => {
     return (
         <DropdownMenu open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
             <DropdownMenuTrigger asChild>
-                <Button
-                    variant="outline"
-                    className="data-[state=open]:bg-accent"
-                >
-                    <div className="flex items-center space-x-1.5">
-                        <span className="font-medium">{`${user!.firstName} ${
-                            user!.lastName
-                        }`}</span>
-
-                        <ChevronDownIcon
-                            className={cn(
-                                'w-4 text-muted-foreground',
-                                isOpen && 'rotate-180',
-                            )}
-                        />
-                    </div>
+                <Button size="icon" variant="ghost">
+                    <UserIcon className="w-5 h-5" />
                 </Button>
             </DropdownMenuTrigger>
 
-            <DropdownMenuContent onCloseAutoFocus={(e) => e.preventDefault()}>
+            <DropdownMenuContent
+                sideOffset={20}
+                onCloseAutoFocus={(e) => e.preventDefault()}
+                className="min-w-[17rem]"
+            >
+                <div className="flex items-center space-x-3 pt-4 pb-6 px-4 pr-5">
+                    <Avatar>
+                        <AvatarFallback>
+                            {getNameInitialsForAvatar(
+                                `${user!.firstName} ${user!.lastName}`,
+                            )}
+                        </AvatarFallback>
+                    </Avatar>
+
+                    <div className="flex flex-col">
+                        <span className="text-sm font-medium">{`${
+                            user!.firstName
+                        } ${user!.lastName}`}</span>
+
+                        <span className="text-sm text-muted-foreground leading-tight">
+                            {user!.email}
+                        </span>
+                    </div>
+                </div>
+
+                <Separator className="mb-1" />
+
                 <DropdownMenuItem asChild>
                     <Link
-                        href={route('dashboard')}
+                        href={route('dashboard.index')}
                         className="flex items-center justify-between"
                     >
-                        <span> Dashboard</span>
+                        <span>Dashboard</span>
 
                         <UserIcon className="w-4 h-4" />
                     </Link>
                 </DropdownMenuItem>
-                <DropdownMenuItem>Billing</DropdownMenuItem>
-                <DropdownMenuItem>Team</DropdownMenuItem>
+
+                <Separator className="my-1" />
 
                 {user && (
                     <DropdownMenuItem asChild>

@@ -16,7 +16,8 @@ use Inertia\Inertia;
 |
 */
 
-Route::inertia('/', 'index');
+Route::inertia('/', 'index')->name('homepage');
+Route::inertia('/about', 'about')->name('about');
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
@@ -29,7 +30,7 @@ Route::inertia('/', 'index');
 
 Route::get('/dashboard', function () {
     return Inertia::render('dashboard/index');
-})->middleware(['auth', 'verified'])->name('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard.index');
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');

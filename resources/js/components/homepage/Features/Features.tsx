@@ -9,7 +9,7 @@ import { Feature } from './Feature'
 
 export const Features = () => {
     return (
-        <div className="py-10">
+        <div className="pt-10 pb-16">
             <div className="container">
                 <h2>Features</h2>
 

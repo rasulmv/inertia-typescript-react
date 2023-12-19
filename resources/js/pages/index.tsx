@@ -25,7 +25,10 @@ export default function Index() {
                         className="mt-6 rounded-full self-center sm:self-start"
                         asChild
                     >
-                        <a href="#" target="_blank">
+                        <a
+                            href="https://github.com/rismailov/inertia-typescript-react"
+                            target="_blank"
+                        >
                             <span>Use Template</span>
                         </a>
                     </Button>

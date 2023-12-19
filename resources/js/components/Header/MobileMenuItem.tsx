@@ -1,29 +1,28 @@
 import { cn } from '@/lib/utils'
 import { Link, usePage } from '@inertiajs/react'
-import { LucideIcon } from 'lucide-react'
 
 export const MobileMenuItem = ({
     label,
-    Icon,
     href,
+    component,
 }: {
     label: string
-    Icon: LucideIcon
     href: string
+    component: string
 }) => {
-    const { url } = usePage()
+    const page = usePage()
 
     return (
         <Link
             href={href}
             className={cn(
-                'w-full flex items-center space-x-4 px-5 h-14 font-medium rounded-md [&>svg]:w-5 [&>svg]:h-5',
-                url === href && 'bg-foreground/5',
+                'w-full flex items-center justify-between space-x-4 h-12 text-2xl font-medium rounded-md [&>svg]:w-5 [&>svg]:h-5',
+                component === page.component
+                    ? 'text-foreground'
+                    : 'text-muted-foreground/80',
             )}
         >
-            <Icon />
-
-            <span>{label}</span>
+            {label}
         </Link>
     )
 }
