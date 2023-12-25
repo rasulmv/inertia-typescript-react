@@ -1,4 +1,4 @@
-import AppLayout from '@/layouts/AppLayout'
+import HomeLayout from '@/layouts/HomeLayout'
 import { ReactNode } from 'react'
 
 export default function About() {
@@ -13,4 +13,6 @@ export default function About() {
     )
 }
 
-About.layout = (page: ReactNode) => <AppLayout children={page} title="About" />
+About.layout = (page: ReactNode) => (
+    <HomeLayout children={page} metadata={{ title: 'About' }} />
+)

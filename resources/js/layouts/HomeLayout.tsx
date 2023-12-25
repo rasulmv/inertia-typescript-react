@@ -1,12 +1,10 @@
-/**
- * User and admin dashboard layouts.
- */
 import { Header } from '@/components/common/Header'
 import { Metadata } from '@/components/common/Metadata'
+import { Footer } from '@/components/homepage/Footer'
 import { TMetadata } from '@/types'
 import { PropsWithChildren } from 'react'
 
-export default function DashboardLayout({
+export default function HomeLayout({
     children,
     metadata,
 }: PropsWithChildren<{ metadata: TMetadata }>) {
@@ -16,10 +14,8 @@ export default function DashboardLayout({
 
             <div className="relative min-h-screen flex flex-col justify-between">
                 <Header />
-
-                <main className="flex-1 pt-[60px]">
-                    <div className="container py-6">{children}</div>
-                </main>
+                <main className="flex-1 pt-[60px]">{children}</main>
+                <Footer />
             </div>
         </>
     )

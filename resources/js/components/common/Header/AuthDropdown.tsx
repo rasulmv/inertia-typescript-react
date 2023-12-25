@@ -8,9 +8,9 @@ import { getNameInitialsForAvatar } from '@/lib/utils'
 import { Link, router, usePage } from '@inertiajs/react'
 import { LogOutIcon, UserIcon } from 'lucide-react'
 import { useState } from 'react'
-import { Avatar, AvatarFallback } from '../ui/avatar'
-import { Button } from '../ui/button'
-import { Separator } from '../ui/separator'
+import { Avatar, AvatarFallback } from '../../ui/avatar'
+import { Button } from '../../ui/button'
+import { Separator } from '../../ui/separator'
 
 export const AuthDropdown = () => {
     const { user } = usePage().props

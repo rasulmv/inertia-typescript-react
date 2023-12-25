@@ -1,6 +1,8 @@
 {
     "compilerOptions": {
-        "types": ["vite/client"],
+        "types": [
+            "vite/client"
+        ],
         "allowJs": true,
         "module": "ESNext",
         "moduleResolution": "Node",
@@ -14,7 +16,9 @@
         "resolveJsonModule": true,
         "baseUrl": ".",
         "paths": {
-            "@/*": ["./resources/js/*"]
+            "@/*": [
+                "./resources/js/*"
+            ]
         }
     },
     "include": [

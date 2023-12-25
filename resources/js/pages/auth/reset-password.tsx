@@ -136,5 +136,5 @@ export default function ResetPassword() {
 }
 
 ResetPassword.layout = (page: any) => (
-    <AuthLayout children={page} title="Reset Password" />
+    <AuthLayout children={page} metadata={{ title: 'Reset Password' }} />
 )

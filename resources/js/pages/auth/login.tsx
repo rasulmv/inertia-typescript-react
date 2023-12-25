@@ -159,7 +159,9 @@ export default function Login() {
 Login.layout = (page: ReactNode) => (
     <AuthLayout
         children={page}
-        title="Sign In"
-        description="Log into your account."
+        metadata={{
+            title: 'Sign In',
+            description: 'Log into your account.',
+        }}
     />
 )

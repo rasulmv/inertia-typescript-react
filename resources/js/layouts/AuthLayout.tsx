@@ -1,78 +1,31 @@
 /**
  * Layout for authentication pages and email verification.
  */
-import AppLayout from './AppLayout'
-
-import { Button } from '@/components/ui/button'
-
+import { AuthCard } from '@/components/auth/AuthCard'
+import { Header } from '@/components/common/Header'
+import { Metadata } from '@/components/common/Metadata'
+import { TMetadata } from '@/types'
 import { PropsWithChildren } from 'react'
-import {
-    Card,
-    CardContent,
-    CardDescription,
-    CardFooter,
-    CardHeader,
-    CardTitle,
-} from '@/components/ui/card'
-import { Link, usePage } from '@inertiajs/react'
-import { sleep } from '@/lib/utils'
 
 export default function AuthLayout({
     children,
-    title,
-    description,
-}: PropsWithChildren<{ title: string; description?: string }>) {
-    const { url } = usePage()
-
-    const isLoginPage = url === '/auth/login'
-    const isRegisterPage = url === '/auth/register'
-
+    metadata,
+}: PropsWithChildren<{ metadata: TMetadata }>) {
     return (
-        <AppLayout title={title}>
-            <div className="container">
-                <div className="flex flex-col items-center justify-center py-14">
-                    <Card className="w-full max-w-[450px]">
-                        <CardHeader>
-                            <CardTitle>{title}</CardTitle>
+        <>
+            <Metadata metadata={metadata} />
 
-                            {description && (
-                                <CardDescription className="text-base">
-                                    {description}
-                                </CardDescription>
-                            )}
-                        </CardHeader>
+            <div className="relative min-h-screen flex flex-col justify-between">
+                <Header />
 
-                        <CardContent>{children}</CardContent>
-
-                        {/* show this footer only on login or register pages */}
-                        {(isLoginPage || isRegisterPage) && (
-                            <CardFooter className="flex items-center justify-center space-x-1">
-                                <span className="text-muted-foreground">
-                                    {isLoginPage
-                                        ? "Don't have an account?"
-                                        : 'Already have an account?'}
-                                </span>
-
-                                <Button
-                                    variant="link"
-                                    asChild
-                                    className="p-0 h-auto text-base font-normal underline underline-offset-2 hover:no-underline"
-                                >
-                                    <Link
-                                        href={
-                                            isLoginPage
-                                                ? route('register.create')
-                                                : route('login.create')
-                                        }
-                                    >
-                                        {isLoginPage ? 'Sign up' : 'Sign in'}
-                                    </Link>
-                                </Button>
-                            </CardFooter>
-                        )}
-                    </Card>
-                </div>
+                <main className="flex-1 pt-[60px]">
+                    <div className="container">
+                        <div className="flex flex-col items-center justify-center py-14">
+                            <AuthCard {...metadata}>{children}</AuthCard>
+                        </div>
+                    </div>
+                </main>
             </div>
-        </AppLayout>
+        </>
     )
 }

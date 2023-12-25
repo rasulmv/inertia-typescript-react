@@ -1,18 +1,18 @@
 import { useRoutes } from '@/hooks/use-routes'
-import { useUIStore } from '@/store/ui.atom'
 import { Link, usePage } from '@inertiajs/react'
 import { XIcon } from 'lucide-react'
-import { Button } from '../ui/button'
+import { Button } from '../../../ui/button'
 import { MobileMenuItem } from './MobileMenuItem'
 import { useEffect, useRef } from 'react'
 import { Nullable } from '@/types'
+import { useHeaderContext } from '@/context/HeaderContext'
 
 export const MobileMenu = () => {
     const routes = useRoutes()
     const { user } = usePage().props
 
-    const isMobileMenuOpen = useUIStore((s) => s.isMobileMenuOpen)
-    const setMobileMenuOpen = useUIStore((s) => s.setMobileMenuOpen)
+    // header context
+    const { isMobileMenuOpen, setMobileMenuOpen } = useHeaderContext()
 
     // Close mobile menu when any link in the menu gets clicked
     const rootRef = useRef<HTMLDivElement>(null)

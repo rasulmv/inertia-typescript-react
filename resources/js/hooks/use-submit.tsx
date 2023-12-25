@@ -4,8 +4,8 @@
  * NOTE: Important! This hook returns a Promise and it must be awaited!
  */
 import { useToast } from '@/components/ui/use-toast'
-import { Errors, PageProps } from '@/types/inertia'
 import { sleep } from '@/lib/utils'
+import { Errors, PageProps } from '@/types/inertia'
 import { router } from '@inertiajs/react'
 import { Dispatch, SetStateAction, useState } from 'react'
 import { UseFormReturn } from 'react-hook-form'
@@ -87,8 +87,9 @@ export function useSubmit(): UseSubmitReturnType {
             return
         }
 
-        // if number was passed, use it as a timeout
         if (delay) {
+            // if number was passed, use it as a timeout argument
+            // otherwise default timeout will be used
             await sleep(typeof delay === 'boolean' ? undefined : delay)
         }
 

@@ -1,7 +1,7 @@
 import { Moon, Sun } from 'lucide-react'
 
 import { Button } from '@/components/ui/button'
-import { useTheme } from '@/context/theme-provider'
+import { useTheme } from '@/context/ThemeContext'
 
 export function ThemeSwitcher() {
     const { theme, setTheme } = useTheme()
