@@ -55,6 +55,7 @@ export const MobileMenu = () => {
                     onClick={() => setMobileMenuOpen(false)}
                     size="icon"
                     variant="ghost"
+                    aria-label="Close mobile menu"
                 >
                     <XIcon className="w-6 h-6" />
                 </Button>

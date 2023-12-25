@@ -22,7 +22,11 @@ export const Header = () => {
                 <div className="h-full flex items-center justify-between">
                     {/* LEFT SIDE */}
                     <div className="flex items-center">
-                        <Link href="/" className="mr-8">
+                        <Link
+                            href="/"
+                            className="mr-8"
+                            aria-label="Link to homepage"
+                        >
                             <Logo className="w-6 h-6 fill-foreground" />
                         </Link>
 
@@ -54,7 +58,12 @@ export const Header = () => {
                     <div className="flex items-center space-x-2">
                         <ThemeSwitcher />
 
-                        <Button size="icon" variant="ghost" asChild>
+                        <Button
+                            size="icon"
+                            variant="ghost"
+                            aria-label="Link to Github repository"
+                            asChild
+                        >
                             <a
                                 href="https://github.com/rismailov/inertia-typescript-react"
                                 target="_blank"
@@ -82,6 +91,7 @@ export const Header = () => {
                             variant="ghost"
                             className="sm:hidden"
                             onClick={() => setMobileMenuOpen(true)}
+                            aria-label="Toggle mobile menu"
                         >
                             <MenuIcon />
                         </Button>
