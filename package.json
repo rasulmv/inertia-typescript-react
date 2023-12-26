@@ -4,8 +4,10 @@
     "scripts": {
         "dev": "vite",
         "build": "vite build",
-        "preview": "tsc && vite build",
-        "format": "prettier --write ."
+        "typecheck": "tsc",
+        "lint": "eslint ./resources/js",
+        "format": "prettier --write ./resources/js",
+        "prepare": "husky install"
     },
     "devDependencies": {
         "@types/node": "^20.8.4",
@@ -17,8 +19,10 @@
         "autoprefixer": "^10.4.16",
         "eslint": "^8.56.0",
         "eslint-plugin-react": "^7.33.2",
+        "husky": "^8.0.0",
         "laravel-vite-plugin": "^0.8.1",
         "postcss": "^8.4.32",
+        "prettier": "^3.1.1",
         "react": "^18.2.0",
         "react-dom": "^18.2.0",
         "tailwind-merge": "^2.1.0",
