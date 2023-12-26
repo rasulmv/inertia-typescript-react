@@ -9,10 +9,14 @@ import { PageLayer } from '../PageLayer'
 import { ThemeSwitcher } from '../ThemeSwitcher'
 import { AuthDropdown } from './AuthDropdown'
 import { MobileMenu } from './mobile/MobileMenu'
+import { Nullable } from '@/types'
+import { UserEntity } from '@/types/entities/user.entity'
 
 export const Header = () => {
-    const { component, props } = usePage()
-    const { user } = props
+    const { component } = usePage()
+
+    // one of the few rare cases where user might be null
+    const { user } = usePage<{ user: Nullable<UserEntity> }>().props
 
     const routes = useRoutes()
 

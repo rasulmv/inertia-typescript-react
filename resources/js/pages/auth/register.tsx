@@ -181,10 +181,11 @@ export default function Register() {
 
 Register.layout = (page: ReactNode) => (
     <AuthLayout
-        children={page}
         metadata={{
             title: 'Sign Up',
             description: 'Create a new account.',
         }}
-    />
+    >
+        {page}
+    </AuthLayout>
 )

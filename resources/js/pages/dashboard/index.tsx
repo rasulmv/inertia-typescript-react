@@ -13,5 +13,5 @@ export default function DashboardIndex() {
 }
 
 DashboardIndex.layout = (page: ReactNode) => (
-    <DashboardLayout children={page} metadata={{ title: 'Dashboard' }} />
+    <DashboardLayout metadata={{ title: 'Dashboard' }}>{page}</DashboardLayout>
 )

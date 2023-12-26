@@ -1,15 +1,18 @@
+import { useHeaderContext } from '@/context/HeaderContext'
 import { useRoutes } from '@/hooks/use-routes'
+import { Nullable } from '@/types'
+import { UserEntity } from '@/types/entities/user.entity'
 import { Link, usePage } from '@inertiajs/react'
 import { XIcon } from 'lucide-react'
+import { useEffect, useRef } from 'react'
 import { Button } from '../../../ui/button'
 import { MobileMenuItem } from './MobileMenuItem'
-import { useEffect, useRef } from 'react'
-import { Nullable } from '@/types'
-import { useHeaderContext } from '@/context/HeaderContext'
 
 export const MobileMenu = () => {
     const routes = useRoutes()
-    const { user } = usePage().props
+
+    // one of the few rare cases where user might be null
+    const { user } = usePage<{ user: Nullable<UserEntity> }>().props
 
     // header context
     const { isMobileMenuOpen, setMobileMenuOpen } = useHeaderContext()

@@ -43,10 +43,11 @@ export default function VerifyEmail() {
 
 VerifyEmail.layout = (page: ReactNode) => (
     <AuthLayout
-        children={page}
         metadata={{
             title: 'Almost there!',
             description: 'Please verify your e-mail address to continue.',
         }}
-    />
+    >
+        {page}
+    </AuthLayout>
 )

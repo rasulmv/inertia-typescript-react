@@ -17,7 +17,7 @@ export const useRoutes = (): TRoute[] => {
     const { component } = usePage()
 
     // Dashboard routes
-    if (component.startsWith('dashboard')) {
+    if (typeof component === 'string' && component.startsWith('dashboard')) {
         return [
             {
                 href: route('homepage'),

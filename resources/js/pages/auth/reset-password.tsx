@@ -12,7 +12,7 @@ import { useSubmit } from '@/hooks/use-submit'
 import AuthLayout from '@/layouts/AuthLayout'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { usePage } from '@inertiajs/react'
-import { useEffect } from 'react'
+import { ReactNode, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
@@ -135,6 +135,6 @@ export default function ResetPassword() {
     )
 }
 
-ResetPassword.layout = (page: any) => (
-    <AuthLayout children={page} metadata={{ title: 'Reset Password' }} />
+ResetPassword.layout = (page: ReactNode) => (
+    <AuthLayout metadata={{ title: 'Reset Password' }}>{page}</AuthLayout>
 )

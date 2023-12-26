@@ -20,6 +20,7 @@ import { z } from 'zod'
 
 export default function Login() {
     const { status } = usePage().props
+
     const { submit, isLoading } = useSubmit()
 
     const schema = z.object({
@@ -158,10 +159,11 @@ export default function Login() {
 
 Login.layout = (page: ReactNode) => (
     <AuthLayout
-        children={page}
         metadata={{
             title: 'Sign In',
             description: 'Log into your account.',
         }}
-    />
+    >
+        {page}
+    </AuthLayout>
 )

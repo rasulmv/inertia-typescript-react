@@ -5,11 +5,7 @@ export const Metadata = ({ metadata }: { metadata: TMetadata }) => {
     return (
         <Head title={metadata.title}>
             {metadata.description && (
-                <meta
-                    head-key="description"
-                    name="description"
-                    content={metadata.description}
-                />
+                <meta name="description" content={metadata.description} />
             )}
         </Head>
     )

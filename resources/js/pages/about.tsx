@@ -14,5 +14,5 @@ export default function About() {
 }
 
 About.layout = (page: ReactNode) => (
-    <HomeLayout children={page} metadata={{ title: 'About' }} />
+    <HomeLayout metadata={{ title: 'About' }}>{page}</HomeLayout>
 )

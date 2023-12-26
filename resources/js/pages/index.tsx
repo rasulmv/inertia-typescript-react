@@ -41,5 +41,5 @@ export default function Index() {
 }
 
 Index.layout = (page: ReactNode) => (
-    <HomeLayout children={page} metadata={{ title: 'Homepage' }} />
+    <HomeLayout metadata={{ title: 'Homepage' }}>{page}</HomeLayout>
 )

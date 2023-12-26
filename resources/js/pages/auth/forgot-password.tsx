@@ -12,12 +12,15 @@ import { Input } from '@/components/ui/input'
 import { useSubmit } from '@/hooks/use-submit'
 import AuthLayout from '@/layouts/AuthLayout'
 import { zodResolver } from '@hookform/resolvers/zod'
+import { usePage } from '@inertiajs/react'
 import { ReactNode, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
 export default function ForgotPassword() {
-    const { submit, isLoading, status } = useSubmit()
+    const { status } = usePage<{ status?: string }>().props
+
+    const { submit, isLoading } = useSubmit()
 
     const schema = z.object({
         email: z.string().email('Invalid e-mail address'),
@@ -94,11 +97,12 @@ export default function ForgotPassword() {
 
 ForgotPassword.layout = (page: ReactNode) => (
     <AuthLayout
-        children={page}
         metadata={{
             title: 'Forgot Password',
             description:
                 'Forgot your password? No problem. Just let us know your email address and we will email you a password reset link that will allow you to choose a new one.',
         }}
-    />
+    >
+        {page}
+    </AuthLayout>
 )

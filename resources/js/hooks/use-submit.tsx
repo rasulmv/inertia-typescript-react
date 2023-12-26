@@ -5,25 +5,31 @@
  */
 import { useToast } from '@/components/ui/use-toast'
 import { sleep } from '@/lib/utils'
-import { Errors, PageProps } from '@/types/inertia'
+import { PagePropsExtended } from '@/types/inertia'
 import { router } from '@inertiajs/react'
 import { Dispatch, SetStateAction, useState } from 'react'
-import { UseFormReturn } from 'react-hook-form'
+import { FieldValues, Path, UseFormReturn } from 'react-hook-form'
 
-interface SubmitFunctionParams {
+// making "T" optional because dependant form and data props are optional too
+type SubmitFunctionParams<T extends FieldValues> = {
     // react-hook-form form instance
-    form?: UseFormReturn<any>
+    form?: UseFormReturn<T>
+
+    // request payload
+    data?: T
 
     // request URL
     url: string
 
     // success request callback
     onSuccess?:
-        | ((props: PageProps) => void)
-        | ((props: PageProps) => Promise<void>)
+        | ((props: PagePropsExtended['props']) => void)
+        | ((props: PagePropsExtended['props']) => Promise<void>)
 
     // failed request callback
-    onError?: ((errors: Errors) => void) | ((errors: Errors) => Promise<void>)
+    onError?:
+        | ((errors: PagePropsExtended['errors']) => void)
+        | ((errors: PagePropsExtended['errors']) => Promise<void>)
 
     // fake delay for animation: when form submits too quickly user's not sure if anything happened
     delay?: boolean | number
@@ -34,9 +40,6 @@ interface SubmitFunctionParams {
 
     // request method
     method?: 'get' | 'post' | 'put' | 'patch' | 'delete'
-
-    // request payload
-    data?: any
 
     // whether or not to reset the form on successful request
     resetFormOnSuccess?: boolean
@@ -52,21 +55,21 @@ interface SubmitFunctionParams {
 }
 
 interface UseSubmitReturnType {
-    submit: (args: SubmitFunctionParams) => Promise<void>
+    submit: <T extends FieldValues>(
+        args: SubmitFunctionParams<T>,
+    ) => Promise<void>
     isLoading: boolean
     setIsLoading: Dispatch<SetStateAction<boolean>>
     slug: string | undefined
-    status: string | null
 }
 
 export function useSubmit(): UseSubmitReturnType {
     const [actionSlug, setActionSlug] = useState<string | undefined>(undefined)
     const [isLoading, setIsLoading] = useState(false)
-    const [status, setStatus] = useState(null)
 
     const { toast } = useToast()
 
-    async function submit({
+    async function submit<T extends FieldValues>({
         form,
         onSuccess,
         onError,
@@ -78,7 +81,7 @@ export function useSubmit(): UseSubmitReturnType {
         resetFormOnSuccess = false,
         slug,
         options,
-    }: SubmitFunctionParams) {
+    }: SubmitFunctionParams<T>) {
         slug && setActionSlug(slug)
 
         setIsLoading(true)
@@ -95,35 +98,46 @@ export function useSubmit(): UseSubmitReturnType {
 
         router[method](url, data ?? {}, {
             ...(options && options),
-            // @ts-ignore: Couldn't properly type "onSuccess" callback
-            onSuccess: async ({ props }: PageProps) => {
+            // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+            // @ts-ignore
+            onSuccess: async ({
+                props,
+            }: {
+                props: PagePropsExtended['props']
+            }) => {
                 // toast if flash.success is passed
-                if (props.flash?.success) {
+                if (props.flash.success) {
                     toast({
                         variant: 'success',
                         description: props.flash.success,
                     })
                 }
 
-                if (props.status) {
-                    setStatus(props.status)
+                if (form && resetFormOnSuccess) {
+                    form.reset()
                 }
 
-                form && resetFormOnSuccess && form.reset()
+                if (onSuccess) {
+                    await onSuccess(props)
+                }
 
-                onSuccess && (await onSuccess(props))
-
-                stopLoadingOnSuccess && setIsLoading(false)
+                if (stopLoadingOnSuccess) {
+                    setIsLoading(false)
+                }
             },
             onError: async (errors) => {
                 if (form) {
                     for (const prop in errors) {
-                        // @ts-ignore
-                        form.setError(prop, { message: errors[prop] })
+                        form.setError(prop as Path<T>, {
+                            message: errors[prop],
+                        })
                     }
                 }
 
-                onError && (await onError(errors))
+                if (onError) {
+                    await onError(errors)
+                }
+
                 setIsLoading(false)
             },
         })
@@ -134,6 +148,5 @@ export function useSubmit(): UseSubmitReturnType {
         isLoading,
         setIsLoading,
         slug: actionSlug,
-        status,
     }
 }

@@ -33,18 +33,16 @@ export const AuthDropdown = () => {
                     <Avatar>
                         <AvatarFallback>
                             {getNameInitialsForAvatar(
-                                `${user!.firstName} ${user!.lastName}`,
+                                `${user.firstName} ${user.lastName}`,
                             )}
                         </AvatarFallback>
                     </Avatar>
 
                     <div className="flex flex-col">
-                        <span className="text-sm font-medium">{`${
-                            user!.firstName
-                        } ${user!.lastName}`}</span>
+                        <span className="text-sm font-medium">{`${user.firstName} ${user.lastName}`}</span>
 
                         <span className="text-sm text-muted-foreground leading-tight">
-                            {user!.email}
+                            {user.email}
                         </span>
                     </div>
                 </div>
