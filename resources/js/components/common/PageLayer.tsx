@@ -9,7 +9,7 @@ export const PageLayer = () => {
     return (
         <div
             onClick={() => setMobileMenuOpen(false)}
-            className="sm:hidden z-[21] absolute inset-0 w-full h-full bg-foreground/20 dark:bg-background/50"
+            className="sm:hidden z-[21] absolute inset-0 w-full h-full bg-foreground/20 dark:bg-background/50 backdrop-blur-sm transition-all"
             style={{
                 opacity: isMobileMenuOpen ? 1 : 0,
                 pointerEvents: isMobileMenuOpen ? 'all' : 'none',

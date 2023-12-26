@@ -5,7 +5,7 @@ import {
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 import { getNameInitialsForAvatar } from '@/lib/utils'
-import { Link, router, usePage } from '@inertiajs/react'
+import { Link, usePage } from '@inertiajs/react'
 import { LogOutIcon, UserIcon } from 'lucide-react'
 import { useState } from 'react'
 import { Avatar, AvatarFallback } from '../../ui/avatar'
@@ -18,7 +18,7 @@ export const AuthDropdown = () => {
 
     return (
         <DropdownMenu open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
-            <DropdownMenuTrigger asChild>
+            <DropdownMenuTrigger asChild className="hidden sm:flex">
                 <Button size="icon" variant="ghost">
                     <UserIcon className="w-5 h-5" />
                 </Button>
@@ -27,7 +27,7 @@ export const AuthDropdown = () => {
             <DropdownMenuContent
                 sideOffset={20}
                 onCloseAutoFocus={(e) => e.preventDefault()}
-                className="min-w-[17rem]"
+                className="min-w-[17rem] hidden sm:block"
             >
                 <div className="flex items-center space-x-3 pt-4 pb-6 px-4 pr-5">
                     <Avatar>
@@ -64,14 +64,17 @@ export const AuthDropdown = () => {
 
                 {user && (
                     <DropdownMenuItem asChild>
-                        <button
-                            onClick={() => router.post(route('logout'))}
+                        <Link
+                            href={route('logout')}
+                            method="post"
+                            as="button"
+                            type="button"
                             className="w-full flex items-center justify-between text-destructive focus:text-destructive focus:bg-destructive/5"
                         >
-                            <span>Logout</span>
+                            <span>Log out</span>
 
                             <LogOutIcon className="w-4 h-4" />
-                        </button>
+                        </Link>
                     </DropdownMenuItem>
                 )}
             </DropdownMenuContent>

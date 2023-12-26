@@ -28,9 +28,14 @@ Route::inertia('/about', 'about')->name('about');
 //     ]);
 // });
 
-Route::get('/dashboard', function () {
-    return Inertia::render('dashboard/index');
-})->middleware(['auth', 'verified'])->name('dashboard.index');
+Route::group([
+    'prefix'     => 'dashboard',
+    'middleware' => ['auth', 'verified'],
+    'as'         => 'dashboard.',
+], function () {
+    Route::inertia('/', 'dashboard/index')->name('index');
+    Route::inertia('/profile', 'dashboard/profile')->name('profile');
+});
 
 // Route::middleware('auth')->group(function () {
 //     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
