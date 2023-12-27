@@ -1,10 +1,10 @@
 import {
-    AmpersandIcon,
-    GaugeIcon,
-    SmartphoneIcon,
-    SunIcon,
-    UserIcon,
-} from 'lucide-react'
+    IconAmpersand,
+    IconGauge,
+    IconPhone,
+    IconSun,
+    IconUser,
+} from '@tabler/icons-react'
 import { Feature } from './Feature'
 
 export const Features = () => {
@@ -17,31 +17,31 @@ export const Features = () => {
                     <Feature
                         title="Dark Mode Support"
                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, totam!"
-                        icon={<SunIcon />}
+                        icon={<IconSun />}
                     />
 
                     <Feature
                         title="Authorization"
                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, totam!"
-                        icon={<UserIcon />}
+                        icon={<IconUser />}
                     />
 
                     <Feature
                         title="Responsive"
                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, totam!"
-                        icon={<SmartphoneIcon />}
+                        icon={<IconPhone />}
                     />
 
                     <Feature
                         title="Lighthouse Optimized"
                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, totam!"
-                        icon={<GaugeIcon />}
+                        icon={<IconGauge />}
                     />
 
                     <Feature
                         title="Typography"
                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, totam!"
-                        icon={<AmpersandIcon />}
+                        icon={<IconAmpersand />}
                     />
                 </div>
             </div>

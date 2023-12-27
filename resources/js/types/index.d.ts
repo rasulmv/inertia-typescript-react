@@ -2,10 +2,12 @@ export type DateTime = string
 
 export type Nullable<T> = T | null
 
-type TMetadata = {
+export type TMetadata = {
     title: string
     description?: string
 }
+
+export type TAppSection = 'home' | 'auth' | 'dashboard'
 
 export interface User {
     id: number

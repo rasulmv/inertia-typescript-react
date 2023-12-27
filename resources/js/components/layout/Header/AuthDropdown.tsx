@@ -6,13 +6,13 @@ import {
 } from '@/components/ui/dropdown-menu'
 import { getNameInitialsForAvatar } from '@/lib/utils'
 import { Link, usePage } from '@inertiajs/react'
-import { LogOutIcon, UserIcon } from 'lucide-react'
-import { useState } from 'react'
+import { IconLogout, IconUser } from '@tabler/icons-react'
+import { FC, useState } from 'react'
 import { Avatar, AvatarFallback } from '../../ui/avatar'
 import { Button } from '../../ui/button'
 import { Separator } from '../../ui/separator'
 
-export const AuthDropdown = () => {
+export const AuthDropdown: FC = () => {
     const { user } = usePage().props
     const [isOpen, setIsOpen] = useState(false)
 
@@ -20,7 +20,7 @@ export const AuthDropdown = () => {
         <DropdownMenu open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
             <DropdownMenuTrigger asChild className="hidden sm:flex">
                 <Button size="icon" variant="ghost">
-                    <UserIcon className="w-5 h-5" />
+                    <IconUser className="w-5 h-5" />
                 </Button>
             </DropdownMenuTrigger>
 
@@ -51,32 +51,30 @@ export const AuthDropdown = () => {
 
                 <DropdownMenuItem asChild>
                     <Link
-                        href={route('dashboard.index')}
+                        href={route('dashboard.profile')}
                         className="flex items-center justify-between"
                     >
-                        <span>Dashboard</span>
+                        <span>Profile</span>
 
-                        <UserIcon className="w-4 h-4" />
+                        <IconUser className="w-4 h-4" />
                     </Link>
                 </DropdownMenuItem>
 
                 <Separator className="my-1" />
 
-                {user && (
-                    <DropdownMenuItem asChild>
-                        <Link
-                            href={route('logout')}
-                            method="post"
-                            as="button"
-                            type="button"
-                            className="w-full flex items-center justify-between text-destructive focus:text-destructive focus:bg-destructive/5"
-                        >
-                            <span>Log out</span>
+                <DropdownMenuItem asChild>
+                    <Link
+                        href={route('logout')}
+                        method="post"
+                        as="button"
+                        type="button"
+                        className="w-full flex items-center justify-between text-destructive focus:text-destructive focus:bg-destructive/5"
+                    >
+                        <span>Log out</span>
 
-                            <LogOutIcon className="w-4 h-4" />
-                        </Link>
-                    </DropdownMenuItem>
-                )}
+                        <IconLogout className="w-4 h-4" />
+                    </Link>
+                </DropdownMenuItem>
             </DropdownMenuContent>
         </DropdownMenu>
     )

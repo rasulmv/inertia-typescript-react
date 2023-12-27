@@ -1,14 +1,14 @@
-import { useRoutes } from '@/hooks/use-routes'
 import { cn } from '@/lib/utils'
 import { Link, usePage } from '@inertiajs/react'
-import { Logo } from '../Logo'
+import { Logo } from '../../../common/Logo'
+import { useRoutes } from '@/hooks/use-routes'
 
-export const HeaderLeft = () => {
+export const HeaderLeftDefault = () => {
     const { component } = usePage()
     const routes = useRoutes()
 
     return (
-        <div className="flex items-center">
+        <>
             <Link href="/" className="mr-8" aria-label="Link to homepage">
                 <Logo className="w-6 h-6 fill-foreground" />
             </Link>
@@ -29,6 +29,6 @@ export const HeaderLeft = () => {
                     </Link>
                 ))}
             </div>
-        </div>
+        </>
     )
 }

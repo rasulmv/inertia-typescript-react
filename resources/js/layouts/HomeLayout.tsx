@@ -1,6 +1,6 @@
-import { Header } from '@/components/common/Header'
 import { Metadata } from '@/components/common/Metadata'
-import { Footer } from '@/components/homepage/Footer'
+import { Footer } from '@/components/layout/Footer'
+import { Header } from '@/components/layout/Header'
 import { TMetadata } from '@/types'
 import { PropsWithChildren } from 'react'
 
@@ -14,7 +14,9 @@ export default function HomeLayout({
 
             <div className="relative min-h-screen flex flex-col justify-between">
                 <Header />
+
                 <main className="flex-1 pt-[60px]">{children}</main>
+
                 <Footer />
             </div>
         </>

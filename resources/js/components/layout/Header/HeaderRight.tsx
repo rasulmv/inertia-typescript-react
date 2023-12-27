@@ -3,9 +3,16 @@ import { useHeaderContext } from '@/context/HeaderContext'
 import { Nullable } from '@/types'
 import { UserEntity } from '@/types/entities/user.entity'
 import { Link, usePage } from '@inertiajs/react'
-import { GithubIcon, MenuIcon } from 'lucide-react'
-import { ThemeSwitcher } from '../ThemeSwitcher'
-import { AuthDropdown } from './AuthDropdown'
+import { IconBrandGithub, IconMenu } from '@tabler/icons-react'
+import { ThemeSwitcher } from '../../common/ThemeSwitcher'
+import { lazy } from 'react'
+import { Suspense } from 'react'
+
+const AuthDropdown = lazy(() =>
+    import('./AuthDropdown').then(({ AuthDropdown }) => ({
+        default: AuthDropdown,
+    })),
+)
 
 export const HeaderRight = () => {
     // one of the few rare cases where user might be null
@@ -27,17 +34,19 @@ export const HeaderRight = () => {
                     href="https://github.com/rismailov/inertia-typescript-react"
                     target="_blank"
                 >
-                    <GithubIcon className="w-5 h-5" />
+                    <IconBrandGithub className="w-5 h-5" />
                 </a>
             </Button>
 
-            {user ? (
-                <AuthDropdown />
-            ) : (
-                <Button size="sm" asChild className="hidden sm:flex">
-                    <Link href={route('login.create')}>Sign In</Link>
-                </Button>
-            )}
+            <Suspense fallback={<></>}>
+                {user ? (
+                    <AuthDropdown />
+                ) : (
+                    <Button size="sm" asChild className="hidden sm:flex">
+                        <Link href={route('login.create')}>Sign In</Link>
+                    </Button>
+                )}
+            </Suspense>
 
             <Button
                 size="icon"
@@ -46,7 +55,7 @@ export const HeaderRight = () => {
                 onClick={() => setMobileMenuOpen(true)}
                 aria-label="Toggle mobile menu"
             >
-                <MenuIcon />
+                <IconMenu />
             </Button>
         </div>
     )

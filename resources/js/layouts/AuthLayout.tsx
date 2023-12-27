@@ -2,8 +2,8 @@
  * Layout for authentication pages and email verification.
  */
 import { AuthCard } from '@/components/auth/AuthCard'
-import { Header } from '@/components/common/Header'
 import { Metadata } from '@/components/common/Metadata'
+import { Header } from '@/components/layout/Header'
 import { TMetadata } from '@/types'
 import { PropsWithChildren } from 'react'
 

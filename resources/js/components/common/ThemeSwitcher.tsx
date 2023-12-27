@@ -1,4 +1,4 @@
-import { Moon, Sun } from 'lucide-react'
+import { IconMoon, IconSun } from '@tabler/icons-react'
 
 import { Button } from '@/components/ui/button'
 import { useTheme } from '@/context/ThemeContext'
@@ -13,7 +13,7 @@ export function ThemeSwitcher() {
             size="icon"
             className="[&>svg]:w-5 [&>svg]:h-5"
         >
-            {theme === 'light' ? <Moon /> : <Sun />}
+            {theme === 'light' ? <IconMoon /> : <IconSun />}
             <span className="sr-only">Toggle theme</span>
         </Button>
     )

@@ -1,14 +1,18 @@
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
 import { useHeaderContext } from '@/context/HeaderContext'
 import { useRoutes } from '@/hooks/use-routes'
-import { getNameInitialsForAvatar } from '@/lib/utils'
 import { Nullable } from '@/types'
 import { UserEntity } from '@/types/entities/user.entity'
 import { Link, usePage } from '@inertiajs/react'
-import { XIcon } from 'lucide-react'
-import { useEffect, useRef } from 'react'
-import { Button } from '../../../ui/button'
+import { IconX } from '@tabler/icons-react'
+import { Suspense, lazy, useEffect, useRef } from 'react'
 import { MobileMenuItem } from './MobileMenuItem'
+
+const MobileMenuFooterAuth = lazy(() =>
+    import('./MobileMenuFooterAuth').then(({ MobileMenuFooterAuth }) => ({
+        default: MobileMenuFooterAuth,
+    })),
+)
 
 export const MobileMenu = () => {
     const routes = useRoutes()
@@ -62,7 +66,7 @@ export const MobileMenu = () => {
                     variant="ghost"
                     aria-label="Close mobile menu"
                 >
-                    <XIcon className="w-6 h-6" />
+                    <IconX className="w-6 h-6" />
                 </Button>
             </div>
 
@@ -80,52 +84,15 @@ export const MobileMenu = () => {
 
             {/* menu footer */}
             <div className="flex-1 p-8 border-t">
-                {user ? (
-                    <>
-                        <Link
-                            href={route('dashboard.index')}
-                            className="flex items-center space-x-4"
-                        >
-                            <Avatar>
-                                <AvatarFallback>
-                                    {getNameInitialsForAvatar(
-                                        `${user.firstName} ${user.lastName}`,
-                                    )}
-                                </AvatarFallback>
-                            </Avatar>
-
-                            <div className="flex flex-col">
-                                <span className="font-medium">{`${user.firstName} ${user.lastName}`}</span>
-
-                                <span className="text-sm text-muted-foreground leading-tight">
-                                    {user.email}
-                                </span>
-                            </div>
-                        </Link>
-
-                        {/* auth user menu */}
-                        <div className="flex flex-col mt-6">
-                            <MobileMenuItem
-                                label="Profile"
-                                href={route('dashboard.profile')}
-                                component="dashboard/profile"
-                            />
-
-                            <MobileMenuItem
-                                label="Log out"
-                                href={route('logout')}
-                                method="post"
-                                as="button"
-                                type="button"
-                                className="logout"
-                            />
-                        </div>
-                    </>
-                ) : (
-                    <Button className="w-full h-11" asChild>
-                        <Link href={route('login.create')}>Sign In</Link>
-                    </Button>
-                )}
+                <Suspense fallback={<></>}>
+                    {user ? (
+                        <MobileMenuFooterAuth />
+                    ) : (
+                        <Button className="w-full h-11" asChild>
+                            <Link href={route('login.create')}>Sign In</Link>
+                        </Button>
+                    )}
+                </Suspense>
             </div>
         </div>
     )
