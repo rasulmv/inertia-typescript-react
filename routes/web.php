@@ -1,46 +1,31 @@
 <?php
 
-use App\Http\Controllers\ProfileController;
-use Illuminate\Foundation\Application;
+use App\Http\Controllers\User\Account\PasswordController;
+use App\Http\Controllers\User\Account\ProfileController;
 use Illuminate\Support\Facades\Route;
-use Inertia\Inertia;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+/* Home */
+Route::inertia('/', 'home/index')->name('homepage');
+Route::inertia('/about', 'home/about')->name('about');
 
-Route::inertia('/', 'index')->name('homepage');
-Route::inertia('/about', 'about')->name('about');
-
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-
+/* User Dashboard */
 Route::group([
     'prefix'     => 'dashboard',
     'middleware' => ['auth', 'verified'],
     'as'         => 'dashboard.',
 ], function () {
     Route::inertia('/', 'dashboard/index')->name('index');
-    Route::inertia('/profile', 'dashboard/profile')->name('profile');
-});
 
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
+    // account
+    Route::prefix('account')->as('account.')->group(function () {
+        // profile info
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+
+        // change password
+        Route::get('/password', [PasswordController::class, 'edit'])->name('password.edit');
+        Route::patch('/password', [PasswordController::class, 'update'])->name('password.update');
+    });
+});
 
 require __DIR__.'/auth.php';

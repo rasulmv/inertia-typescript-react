@@ -2,7 +2,11 @@ import { Link } from '@inertiajs/react'
 import { Button } from '../ui/button'
 import { CardFooter } from '../ui/card'
 
-export const AuthCardFooter = ({ isLoginPage }: { isLoginPage: boolean }) => {
+export default function AuthCardFooter({
+    isLoginPage,
+}: {
+    isLoginPage: boolean
+}) {
     return (
         <CardFooter className="flex items-center justify-center space-x-1">
             <span className="text-muted-foreground">

@@ -8,16 +8,11 @@ import { IconX } from '@tabler/icons-react'
 import { Suspense, lazy, useEffect, useRef } from 'react'
 import { MobileMenuItem } from './MobileMenuItem'
 
-const MobileMenuFooterAuth = lazy(() =>
-    import('./MobileMenuFooterAuth').then(({ MobileMenuFooterAuth }) => ({
-        default: MobileMenuFooterAuth,
-    })),
-)
+const MobileMenuFooterAuth = lazy(() => import('./MobileMenuFooterAuth'))
 
 export const MobileMenu = () => {
     const routes = useRoutes()
 
-    // one of the few rare cases where user might be null
     const { user } = usePage<{ user: Nullable<UserEntity> }>().props
 
     // header context

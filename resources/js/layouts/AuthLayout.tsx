@@ -3,7 +3,7 @@
  */
 import { AuthCard } from '@/components/auth/AuthCard'
 import { Metadata } from '@/components/common/Metadata'
-import { Header } from '@/components/layout/Header'
+import { Header } from '@/components/layout/guest/Header'
 import { TMetadata } from '@/types'
 import { PropsWithChildren } from 'react'
 

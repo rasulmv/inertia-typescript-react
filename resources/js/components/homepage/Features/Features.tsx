@@ -1,7 +1,7 @@
 import {
     IconAmpersand,
+    IconDeviceMobile,
     IconGauge,
-    IconPhone,
     IconSun,
     IconUser,
 } from '@tabler/icons-react'
@@ -29,7 +29,7 @@ export const Features = () => {
                     <Feature
                         title="Responsive"
                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, totam!"
-                        icon={<IconPhone />}
+                        icon={<IconDeviceMobile />}
                     />
 
                     <Feature

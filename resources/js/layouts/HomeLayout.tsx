@@ -1,6 +1,6 @@
 import { Metadata } from '@/components/common/Metadata'
-import { Footer } from '@/components/layout/Footer'
-import { Header } from '@/components/layout/Header'
+import { Footer } from '@/components/layout/guest/Footer'
+import { Header } from '@/components/layout/guest/Header'
 import { TMetadata } from '@/types'
 import { PropsWithChildren } from 'react'
 

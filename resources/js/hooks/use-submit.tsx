@@ -3,12 +3,12 @@
  *
  * NOTE: Important! This hook returns a Promise and it must be awaited!
  */
-import { useToast } from '@/components/ui/use-toast'
 import { sleep } from '@/lib/utils'
 import { PagePropsExtended } from '@/types/inertia'
 import { router } from '@inertiajs/react'
 import { Dispatch, SetStateAction, useState } from 'react'
 import { FieldValues, Path, UseFormReturn } from 'react-hook-form'
+import { toast } from 'sonner'
 
 // making "T" optional because dependant form and data props are optional too
 type SubmitFunctionParams<T extends FieldValues> = {
@@ -67,8 +67,6 @@ export function useSubmit(): UseSubmitReturnType {
     const [actionSlug, setActionSlug] = useState<string | undefined>(undefined)
     const [isLoading, setIsLoading] = useState(false)
 
-    const { toast } = useToast()
-
     async function submit<T extends FieldValues>({
         form,
         onSuccess,
@@ -105,12 +103,8 @@ export function useSubmit(): UseSubmitReturnType {
             }: {
                 props: PagePropsExtended['props']
             }) => {
-                // toast if flash.success is passed
                 if (props.flash.success) {
-                    toast({
-                        variant: 'success',
-                        description: props.flash.success,
-                    })
+                    toast(props.flash.success)
                 }
 
                 if (form && resetFormOnSuccess) {

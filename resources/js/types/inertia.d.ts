@@ -12,6 +12,8 @@ interface PagePropsExtended extends PageProps {
         // this prop is not defined in HandleInertiaRequests file, but
         status?: Nullable<string>
     }
+    // the type is "unknown" by default
+    component: string
 }
 
 declare module '@inertiajs/react' {

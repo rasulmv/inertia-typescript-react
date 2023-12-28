@@ -3,19 +3,13 @@ import { useHeaderContext } from '@/context/HeaderContext'
 import { Nullable } from '@/types'
 import { UserEntity } from '@/types/entities/user.entity'
 import { Link, usePage } from '@inertiajs/react'
-import { IconBrandGithub, IconMenu } from '@tabler/icons-react'
-import { ThemeSwitcher } from '../../common/ThemeSwitcher'
-import { lazy } from 'react'
-import { Suspense } from 'react'
+import { IconBrandGithub, IconMenu2 } from '@tabler/icons-react'
+import { Suspense, lazy } from 'react'
+import { ThemeSwitcher } from '../../../common/ThemeSwitcher'
 
-const AuthDropdown = lazy(() =>
-    import('./AuthDropdown').then(({ AuthDropdown }) => ({
-        default: AuthDropdown,
-    })),
-)
+const AuthDropdown = lazy(() => import('./AuthDropdown'))
 
 export const HeaderRight = () => {
-    // one of the few rare cases where user might be null
     const { user } = usePage<{ user: Nullable<UserEntity> }>().props
 
     const { setMobileMenuOpen } = useHeaderContext()
@@ -42,9 +36,11 @@ export const HeaderRight = () => {
                 {user ? (
                     <AuthDropdown />
                 ) : (
-                    <Button size="sm" asChild className="hidden sm:flex">
-                        <Link href={route('login.create')}>Sign In</Link>
-                    </Button>
+                    <div className="pl-1">
+                        <Button size="sm" asChild className="hidden sm:flex">
+                            <Link href={route('login.create')}>Sign In</Link>
+                        </Button>
+                    </div>
                 )}
             </Suspense>
 
@@ -55,7 +51,7 @@ export const HeaderRight = () => {
                 onClick={() => setMobileMenuOpen(true)}
                 aria-label="Toggle mobile menu"
             >
-                <IconMenu />
+                <IconMenu2 />
             </Button>
         </div>
     )

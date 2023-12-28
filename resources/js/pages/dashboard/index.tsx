@@ -7,7 +7,7 @@ export default function DashboardIndex() {
 
     return (
         <div>
-            <h3>Welcome back, {`${user!.firstName}`}!</h3>
+            <h4>Welcome back, {`${user!.first_name}`}!</h4>
         </div>
     )
 }

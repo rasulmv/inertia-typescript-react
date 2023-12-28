@@ -8,11 +8,7 @@ import {
 import { usePage } from '@inertiajs/react'
 import { PropsWithChildren, Suspense, lazy } from 'react'
 
-const AuthCardFooter = lazy(() =>
-    import('./AuthCardFooter').then(({ AuthCardFooter }) => ({
-        default: AuthCardFooter,
-    })),
-)
+const AuthCardFooter = lazy(() => import('./AuthCardFooter'))
 
 export const AuthCard = ({
     children,

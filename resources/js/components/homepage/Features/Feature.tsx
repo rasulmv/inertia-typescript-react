@@ -20,9 +20,7 @@ export const Feature = ({
                 {icon}
             </div>
 
-            <p className="ml-1 mt-4 mb-1 text-xl font-semibold tracking-tight">
-                {title}
-            </p>
+            <p className="ml-1 mt-4 mb-1 text-xl font-semibold">{title}</p>
 
             <p className="ml-1 text-muted-foreground">{description}</p>
         </div>

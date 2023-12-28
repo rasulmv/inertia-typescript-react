@@ -3,7 +3,7 @@ import { cva, type VariantProps } from 'class-variance-authority'
 import * as React from 'react'
 
 import { cn } from '@/lib/utils'
-import { IconLoader } from '@tabler/icons-react'
+import { IconLoader2 } from '@tabler/icons-react'
 
 const buttonVariants = cva(
     'inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-semibold ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50',
@@ -22,7 +22,7 @@ const buttonVariants = cva(
                 link: 'text-primary underline-offset-4 hover:underline',
             },
             size: {
-                default: 'h-9 px-4 py-2',
+                default: 'h-9 px-5 text-[0.91rem]',
                 sm: 'h-8 rounded-md px-4',
                 lg: 'h-10 rounded-md px-6 text-[0.925rem]',
                 icon: 'h-9 w-9',
@@ -54,7 +54,7 @@ const Button = React.forwardRef<
             {...props}
         >
             {isLoading ? (
-                <IconLoader className="animate-spin" />
+                <IconLoader2 className="w-5 h-5 animate-spin" />
             ) : (
                 props.children
             )}

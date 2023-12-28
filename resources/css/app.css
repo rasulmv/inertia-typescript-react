@@ -25,7 +25,7 @@
         --border: 240 5.9% 90%;
         --input: 240 5.9% 90%;
         --ring: 240 5.9% 10%;
-        --radius: 0.5rem;
+        --radius: 0.6rem;
     }
 
     .dark {
@@ -64,19 +64,19 @@
 
     /* Typography */
     h1 {
-        @apply text-4xl font-bold tracking-tight lg:text-5xl;
+        @apply text-4xl font-bold lg:text-5xl tracking-tight;
     }
 
     h2 {
-        @apply text-3xl font-bold tracking-tight;
+        @apply text-3xl font-bold;
     }
 
     h3 {
-        @apply text-2xl font-semibold tracking-tight;
+        @apply text-2xl font-semibold;
     }
 
     h4 {
-        @apply text-xl font-semibold tracking-tight;
+        @apply text-xl font-semibold;
     }
 }
 

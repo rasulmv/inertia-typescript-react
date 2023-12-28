@@ -14,9 +14,6 @@ export default {
         container: {
             center: true,
             padding: '2rem',
-            // screens: {
-            //     "2xl": "1400px",
-            // },
         },
         extend: {
             colors: {
@@ -83,5 +80,6 @@ export default {
         },
     },
 
+    // eslint-disable-next-line no-undef
     plugins: [require('tailwindcss-animate')],
 }

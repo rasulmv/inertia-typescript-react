@@ -1,18 +1,18 @@
+import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { Button } from '@/components/ui/button'
 import {
     DropdownMenu,
     DropdownMenuContent,
     DropdownMenuItem,
     DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
+import { Separator } from '@/components/ui/separator'
 import { getNameInitialsForAvatar } from '@/lib/utils'
 import { Link, usePage } from '@inertiajs/react'
 import { IconLogout, IconUser } from '@tabler/icons-react'
-import { FC, useState } from 'react'
-import { Avatar, AvatarFallback } from '../../ui/avatar'
-import { Button } from '../../ui/button'
-import { Separator } from '../../ui/separator'
+import { useState } from 'react'
 
-export const AuthDropdown: FC = () => {
+export default function AuthDropdown() {
     const { user } = usePage().props
     const [isOpen, setIsOpen] = useState(false)
 
@@ -33,13 +33,13 @@ export const AuthDropdown: FC = () => {
                     <Avatar>
                         <AvatarFallback>
                             {getNameInitialsForAvatar(
-                                `${user.firstName} ${user.lastName}`,
+                                `${user.first_name} ${user.last_name}`,
                             )}
                         </AvatarFallback>
                     </Avatar>
 
                     <div className="flex flex-col">
-                        <span className="text-sm font-medium">{`${user.firstName} ${user.lastName}`}</span>
+                        <span className="text-sm font-medium">{`${user.first_name} ${user.last_name}`}</span>
 
                         <span className="text-sm text-muted-foreground leading-tight">
                             {user.email}
@@ -51,10 +51,10 @@ export const AuthDropdown: FC = () => {
 
                 <DropdownMenuItem asChild>
                     <Link
-                        href={route('dashboard.profile')}
+                        href={route('dashboard.account.profile.edit')}
                         className="flex items-center justify-between"
                     >
-                        <span>Profile</span>
+                        <span>Account</span>
 
                         <IconUser className="w-4 h-4" />
                     </Link>
