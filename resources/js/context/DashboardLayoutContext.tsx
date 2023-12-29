@@ -4,6 +4,7 @@ import {
     SetStateAction,
     createContext,
     useContext,
+    useEffect,
     useState,
 } from 'react'
 
@@ -31,8 +32,26 @@ export const useDashboardLayoutContext = () => {
     return context
 }
 
+// retrieve state from local storage or default value
+const getInitialState = () => {
+    const isExpanded = localStorage.getItem('isSidebarExpanded')
+
+    // if this key doesn't exist in local storage yet, return default value
+    if (isExpanded == null) {
+        return true
+    }
+
+    return isExpanded == '1'
+}
+
 export function DashboardLayoutProvider({ children }: PropsWithChildren) {
-    const [isSidebarExpanded, setSidebarExpanded] = useState<boolean>(true)
+    const [isSidebarExpanded, setSidebarExpanded] =
+        useState<boolean>(getInitialState)
+
+    // persist the state in local storage
+    useEffect(() => {
+        localStorage.setItem('isSidebarExpanded', isSidebarExpanded ? '1' : '0')
+    }, [isSidebarExpanded])
 
     return (
         <DashboardLayoutProviderContext.Provider
