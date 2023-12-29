@@ -6,21 +6,20 @@ import { SidebarMenuItem } from './SidebarMenuItem'
 
 export const Sidebar = () => {
     const { component } = usePage()
-
     const { isSidebarExpanded } = useDashboardLayoutContext()
 
     return (
         <aside
-            className="relative z-30 w-full h-full dark bg-zinc-900 dark:bg-card transition-all duration-300 ease-in-out"
-            style={{ maxWidth: isSidebarExpanded ? 300 : 85 }}
+            className="hidden lg:block sticky z-30 w-full h-full mr-8 dark:bg-card transition-[max-width] duration-300 ease-in-out overflow-hidden bg-card rounded-2xl"
+            style={{ maxWidth: isSidebarExpanded ? 300 : 92 }}
         >
             {/* sidebar header */}
             <div className="py-6 px-8">
                 <Link href="/" className="flex items-center space-x-3">
-                    <Logo className="flex-shrink-0 w-6 h-6 fill-foreground" />
+                    <Logo className="flex-shrink-0 w-6 h-6" />
 
                     <span
-                        className="text-lg font-semibold text-foreground transition-opacity duration-300 ease-in-out whitespace-nowrap"
+                        className="text-lg font-semibold transition-opacity duration-300 ease-in-out whitespace-nowrap"
                         style={{ opacity: isSidebarExpanded ? 1 : 0 }}
                     >
                         {import.meta.env.VITE_APP_NAME}
@@ -29,8 +28,8 @@ export const Sidebar = () => {
             </div>
 
             {/* sidebar body */}
-            <div className="h-full pt-5 px-4">
-                <div className="flex flex-col space-y-1">
+            <div className="h-full pt-5 px-5">
+                <div className="flex flex-col space-y-1.5">
                     <SidebarMenuItem
                         href={route('dashboard.index')}
                         Icon={IconTableFilled}

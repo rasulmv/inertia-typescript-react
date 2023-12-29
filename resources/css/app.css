@@ -4,52 +4,60 @@
 
 @layer base {
     :root {
+        /* additional start */
+        --brand: 242 67% 59%; /* color-600 */
+        --brand-hover: 243 52% 51%; /* color-700 */
+        --success: 142 76% 36%; /* added (tw-green-500) */
+        /* additional end */
+
         --background: 0 0% 100%;
-        --foreground: 240 10% 3.9%;
+        --foreground: 225 7% 11%;
         --card: 0 0% 100%;
-        --card-foreground: 240 10% 3.9%;
         --popover: 0 0% 100%;
-        --popover-foreground: 240 10% 3.9%;
-        --primary: 240 5.9% 10%;
-        --primary-foreground: 0 0% 98%;
+        --popover-foreground: 225 7% 11%;
         --secondary: 240 4.8% 95.9%;
         --secondary-foreground: 240 5.9% 10%;
         --muted: 240 4.8% 95.9%;
         --muted-foreground: 240 3.8% 46.1%;
-        --accent: 240 4.8% 95.9%;
-        --accent-foreground: 240 5.9% 10%;
         --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
-        --success: 142 76% 36%; /* added */
-        --success-foreground: 0 0% 98%; /* added (tw-green-500) */
         --border: 240 5.9% 90%;
         --input: 240 5.9% 90%;
-        --ring: 240 5.9% 10%;
+
+        /* common for both dark and light theme */
+        --ring: var(--brand);
         --radius: 0.6rem;
+        --brand-foreground: var(
+            --background
+        ); /* used with brand background, e.g. button */
+        --success-foreground: var(--background);
+        --primary: var(--brand);
+        --primary-foreground: var(--brand-foreground);
+        --accent: var(--secondary);
+        --accent-foreground: var(--secondary-foreground);
+        --card-foreground: var(--foreground);
     }
 
     .dark {
-        --background: 0 0% 0%; /* modified */
-        --foreground: 0 0% 86%; /* modified */
-        --card: 240 10% 6%; /* modified */
-        --card-foreground: 0 0% 98%;
-        --popover: 240 10% 3.9%;
+        /* additional */
+        --brand: 228 83% 79%; /* color-300 */
+        --brand-hover: 233 79% 74%; /* color-400 */
+        --success: 142 77% 73%; /* green-300 */
+        /* additional end */
+
+        --background: 225 7% 11%;
+        --foreground: 0 0% 86%;
+        --card: 228 7% 14%;
+        --popover: var(--background);
         --popover-foreground: 0 0% 98%;
-        --primary: 0 0% 98%;
-        --primary-foreground: 240 5.9% 10%;
-        --secondary: 240 3.7% 15.9%;
+        --secondary: 220 7% 17%;
         --secondary-foreground: 0 0% 98%;
         --muted: 240 3.7% 15.9%;
-        --muted-foreground: 240 5% 64.9%; /* modified */
-        --accent: 240 3.7% 15.9%;
-        --accent-foreground: 0 0% 98%;
-        --destructive: 353 96% 82%; /* modified (tw-rose-300) */
+        --muted-foreground: 240 5% 64.9%;
+        --destructive: 353 96% 82%; /* rose-300 */
         --destructive-foreground: 0 0% 98%;
-        --success: 142 77% 73%; /* added (tw-green-300) */
-        --success-foreground: 0 0% 98%; /* added */
-        --border: 240 3.7% 15.9%;
+        --border: 240 4% 19%;
         --input: 240 3.7% 15.9%;
-        --ring: 240 4.9% 83.9%;
     }
 }
 

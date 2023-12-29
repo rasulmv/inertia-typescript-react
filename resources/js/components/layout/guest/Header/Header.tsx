@@ -19,10 +19,10 @@ export const Header = () => {
                         <div className="flex items-center space-x-2">
                             <Link
                                 href="/"
-                                className="mr-8"
+                                className="mr-4"
                                 aria-label="Link to homepage"
                             >
-                                <Logo className="w-6 h-6 fill-foreground" />
+                                <Logo className="w-7 h-7" />
                             </Link>
 
                             <div className="hidden sm:flex items-center space-x-6">

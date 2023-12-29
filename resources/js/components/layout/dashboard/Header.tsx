@@ -1,7 +1,7 @@
 import { ThemeSwitcher } from '@/components/common/ThemeSwitcher'
 import { Button } from '@/components/ui/button'
 import { useDashboardLayoutContext } from '@/context/DashboardLayoutContext'
-import { IconChevronsLeft } from '@tabler/icons-react'
+import { IconChevronsLeft, IconMenu } from '@tabler/icons-react'
 import clsx from 'clsx'
 import AuthDropdown from '../guest/Header/AuthDropdown'
 
@@ -10,40 +10,42 @@ export const Header = () => {
         useDashboardLayoutContext()
 
     return (
-        <header
-            className="z-20 fixed top-0 right-0 h-[60px] bg-card transition-[left] duration-300 ease-in-out"
-            style={{ left: isSidebarExpanded ? 300 : 85 }}
-        >
-            <div className="container">
-                <div className="h-full flex items-center justify-between">
-                    {/* left side */}
-                    <div className="flex items-center space-x-2">
-                        {/* expand/collapse sidebar */}
-                        <Button
-                            onClick={() => setSidebarExpanded((prev) => !prev)}
-                            size="icon"
-                            variant="ghost"
-                            aria-label={`${
-                                isSidebarExpanded ? 'Collapse' : 'Expand'
-                            } Sidebar`}
-                        >
-                            <IconChevronsLeft
-                                className={clsx(
-                                    'transform',
-                                    isSidebarExpanded
-                                        ? 'rotate-0'
-                                        : 'rotate-180',
-                                )}
-                            />
-                        </Button>
-                    </div>
+        <header className="h-[60px] px-4 bg-card rounded-2xl transition-[left] duration-300 ease-in-out">
+            <div className="h-full flex items-center justify-between">
+                {/* left side */}
+                <div className="flex items-center">
+                    <Button
+                        size="icon"
+                        variant="ghost"
+                        className="lg:hidden mr-2"
+                    >
+                        <IconMenu />
+                    </Button>
 
-                    {/* right side */}
-                    <div className="flex items-center space-x-2">
-                        <ThemeSwitcher />
+                    {/* expand/collapse sidebar */}
+                    <Button
+                        onClick={() => setSidebarExpanded((prev) => !prev)}
+                        size="icon"
+                        variant="ghost"
+                        aria-label={`${
+                            isSidebarExpanded ? 'Collapse' : 'Expand'
+                        } Sidebar`}
+                        className="hidden lg:flex"
+                    >
+                        <IconChevronsLeft
+                            className={clsx(
+                                'transform',
+                                isSidebarExpanded ? 'rotate-0' : 'rotate-180',
+                            )}
+                        />
+                    </Button>
+                </div>
 
-                        <AuthDropdown />
-                    </div>
+                {/* right side */}
+                <div className="flex items-center space-x-2">
+                    <ThemeSwitcher />
+
+                    <AuthDropdown />
                 </div>
             </div>
         </header>

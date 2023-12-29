@@ -17,31 +17,31 @@ export const Features = () => {
                     <Feature
                         title="Dark Mode Support"
                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, totam!"
-                        icon={<IconSun />}
+                        Icon={IconSun}
                     />
 
                     <Feature
                         title="Authorization"
                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, totam!"
-                        icon={<IconUser />}
+                        Icon={IconUser}
                     />
 
                     <Feature
                         title="Responsive"
                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, totam!"
-                        icon={<IconDeviceMobile />}
+                        Icon={IconDeviceMobile}
                     />
 
                     <Feature
                         title="Lighthouse Optimized"
                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, totam!"
-                        icon={<IconGauge />}
+                        Icon={IconGauge}
                     />
 
                     <Feature
                         title="Typography"
                         description="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni, totam!"
-                        icon={<IconAmpersand />}
+                        Icon={IconAmpersand}
                     />
                 </div>
             </div>

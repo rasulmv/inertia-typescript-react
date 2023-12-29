@@ -20,8 +20,8 @@ export const SidebarMenuItem = ({
                 'flex items-center py-2.5 px-4 font-medium rounded-lg',
                 rest.className,
                 isActive
-                    ? 'text-foreground bg-foreground/10'
-                    : 'text-foreground hover:bg-secondary',
+                    ? 'bg-brand text-background'
+                    : 'hover:bg-accent text-muted-foreground',
             )}
         >
             <Icon className="flex-shrink-0 w-5 h-5" />

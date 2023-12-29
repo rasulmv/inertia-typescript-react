@@ -11,10 +11,10 @@ export const NavItem = ({
             variant="ghost"
             asChild
             className={clsx([
-                'justify-start text-base h-11 font-medium',
+                'justify-start h-10 font-medium rounded-xl',
                 isActive
-                    ? 'bg-muted hover:bg-muted'
-                    : 'hover:bg-transparent hover:underline',
+                    ? 'bg-brand/10 hover:bg-brand/10 text-brand hover:text-brand'
+                    : 'hover:bg-accent text-muted-foreground hover:text-muted-foreground',
             ])}
         >
             <Link {...rest} />
