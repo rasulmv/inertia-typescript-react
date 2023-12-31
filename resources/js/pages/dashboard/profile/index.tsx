@@ -10,7 +10,7 @@ import {
 import { Input } from '@/components/ui/input'
 import { useSubmit } from '@/hooks/use-submit'
 import DashboardLayout from '@/layouts/DashboardLayout'
-import AccountLayout from '@/layouts/dashboard/user/AccountLayout'
+import ProfileLayout from '@/layouts/dashboard/user/ProfileLayout'
 import { usePage } from '@inertiajs/react'
 import { ReactNode, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
@@ -21,7 +21,7 @@ type TFormValues = {
     email: string
 }
 
-export default function DashboardAccountProfile() {
+export default function UserProfileIndex() {
     const { user } = usePage().props
     const { submit } = useSubmit()
 
@@ -42,12 +42,12 @@ export default function DashboardAccountProfile() {
         await submit({
             form,
             method: 'patch',
-            url: route('dashboard.account.profile.update'),
+            url: route('dashboard.profile.update'),
             data,
         })
 
     return (
-        <AccountLayout
+        <ProfileLayout
             title="Profile"
             description="Update your profile information."
         >
@@ -129,11 +129,11 @@ export default function DashboardAccountProfile() {
                     </div>
                 </form>
             </Form>
-        </AccountLayout>
+        </ProfileLayout>
     )
 }
 
-DashboardAccountProfile.layout = (page: ReactNode) => (
+UserProfileIndex.layout = (page: ReactNode) => (
     <DashboardLayout
         metadata={{
             title: 'Profile Settings',

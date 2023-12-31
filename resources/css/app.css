@@ -2,62 +2,79 @@
 @tailwind components;
 @tailwind utilities;
 
+/* website used to conveniently copy color codes: https://ui-colorgen.vercel.app/ */
 @layer base {
     :root {
-        /* additional start */
-        --brand: 242 67% 59%; /* color-600 */
-        --brand-hover: 243 52% 51%; /* color-700 */
-        --success: 142 76% 36%; /* added (tw-green-500) */
-        /* additional end */
-
-        --background: 0 0% 100%;
-        --foreground: 225 7% 11%;
-        --card: 0 0% 100%;
-        --popover: 0 0% 100%;
-        --popover-foreground: 225 7% 11%;
-        --secondary: 240 4.8% 95.9%;
-        --secondary-foreground: 240 5.9% 10%;
-        --muted: 240 4.8% 95.9%;
-        --muted-foreground: 240 3.8% 46.1%;
-        --destructive: 0 84.2% 60.2%;
-        --destructive-foreground: 0 0% 98%;
-        --border: 240 5.9% 90%;
-        --input: 240 5.9% 90%;
-
-        /* common for both dark and light theme */
-        --ring: var(--brand);
-        --radius: 0.6rem;
-        --brand-foreground: var(
-            --background
-        ); /* used with brand background, e.g. button */
-        --success-foreground: var(--background);
-        --primary: var(--brand);
-        --primary-foreground: var(--brand-foreground);
-        --accent: var(--secondary);
-        --accent-foreground: var(--secondary-foreground);
-        --card-foreground: var(--foreground);
+        --brand: 238.7 83.5% 66.7%;
     }
 
     .dark {
-        /* additional */
-        --brand: 228 83% 79%; /* color-300 */
-        --brand-hover: 233 79% 74%; /* color-400 */
-        --success: 142 77% 73%; /* green-300 */
-        /* additional end */
+        --brand: 229.7 93.5% 81.8%;
 
-        --background: 225 7% 11%;
-        --foreground: 0 0% 86%;
-        --card: 228 7% 14%;
-        --popover: var(--background);
-        --popover-foreground: 0 0% 98%;
-        --secondary: 220 7% 17%;
-        --secondary-foreground: 0 0% 98%;
-        --muted: 240 3.7% 15.9%;
-        --muted-foreground: 240 5% 64.9%;
-        --destructive: 353 96% 82%; /* rose-300 */
+        --bg-primary: 225 7% 11%;
+        --bg-secondary: 228 7% 14%;
+        --bg-tertiary: 220 7% 17%;
+    }
+}
+
+@layer base {
+    :root {
+        --background: 240 7% 97%;
+        --foreground: 220 12% 5%;
+
+        --card: 240 7% 97%;
+        --card-foreground: var(--foreground);
+
+        --popover: 240 7% 97%;
+        --popover-foreground: var(--foreground);
+
+        --primary: 228 10% 20%;
+        --primary-foreground: 0 0% 98%;
+
+        --secondary: 231 25% 90%;
+        --secondary-foreground: var(--foreground);
+
+        --muted: 228 16% 94%;
+        --muted-foreground: 228 13% 40%;
+
+        --accent: 228 16% 94%;
+        --accent-foreground: var(--foreground);
+
+        --destructive: 0 72.2% 50.6%;
         --destructive-foreground: 0 0% 98%;
-        --border: 240 4% 19%;
-        --input: 240 3.7% 15.9%;
+
+        --border: 229 21% 90%;
+        --input: 227 24% 85%;
+        --ring: var(--primary);
+
+        --radius: 0.6rem;
+    }
+
+    .dark {
+        --background: var(--bg-primary);
+        --foreground: 231 14% 90%;
+
+        --card: var(--bg-secondary);
+        --card-foreground: var(--foreground);
+
+        --popover: var(--bg-secondary);
+        --popover-foreground: var(--foreground);
+
+        --primary: var(--brand);
+        --primary-foreground: var(--background);
+
+        --muted: var(--accent);
+        --muted-foreground: 229 8% 60%;
+
+        --accent: var(--bg-tertiary);
+        --accent-foreground: var(--foreground);
+
+        --destructive: 0 90.6% 70.8%;
+        --destructive-foreground: var(--background);
+
+        --border: 227 10% 17%;
+        --input: 226 10% 25%;
+        --ring: 228 83% 79% / 0.8;
     }
 }
 

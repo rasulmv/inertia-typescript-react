@@ -10,8 +10,8 @@ export const Sidebar = () => {
 
     return (
         <aside
-            className="hidden lg:block sticky z-30 w-full h-full mr-8 dark:bg-card transition-[max-width] duration-300 ease-in-out overflow-hidden bg-card rounded-2xl"
-            style={{ maxWidth: isSidebarExpanded ? 300 : 92 }}
+            className="hidden lg:block sticky z-30 w-full h-full mr-8 dark:bg-card transition-[max-width] duration-300 ease-in-out overflow-hidden bg-card rounded-xl border"
+            style={{ maxWidth: isSidebarExpanded ? 300 : 93 }}
         >
             {/* sidebar header */}
             <div className="py-6 px-8">
@@ -39,11 +39,11 @@ export const Sidebar = () => {
                     </SidebarMenuItem>
 
                     <SidebarMenuItem
-                        href={route('dashboard.account.profile.edit')}
+                        href={route('dashboard.profile.edit')}
                         Icon={IconUserFilled}
-                        isActive={component.startsWith('dashboard/account')}
+                        isActive={component.startsWith('dashboard/profile')}
                     >
-                        Account
+                        Profile
                     </SidebarMenuItem>
                 </div>
             </div>

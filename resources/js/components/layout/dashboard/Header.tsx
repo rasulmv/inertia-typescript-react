@@ -10,7 +10,7 @@ export const Header = () => {
         useDashboardLayoutContext()
 
     return (
-        <header className="h-[60px] px-4 bg-card rounded-2xl transition-[left] duration-300 ease-in-out">
+        <header className="h-[60px] px-4 bg-card rounded-xl transition-[left] duration-300 ease-in-out border">
             <div className="h-full flex items-center justify-between">
                 {/* left side */}
                 <div className="flex items-center">

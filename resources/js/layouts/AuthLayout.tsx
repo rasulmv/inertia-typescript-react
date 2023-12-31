@@ -18,7 +18,7 @@ export default function AuthLayout({
             <div className="relative min-h-screen flex flex-col justify-between">
                 <Header />
 
-                <main className="flex-1 pt-[60px]">
+                <main className="flex-1 pt-[60px] bg-accent dark:bg-background">
                     <div className="container">
                         <div className="flex flex-col items-center justify-center py-14">
                             <AuthCard {...metadata}>{children}</AuthCard>

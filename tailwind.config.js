@@ -26,10 +26,6 @@ export default {
                     DEFAULT: 'hsl(var(--primary))',
                     foreground: 'hsl(var(--primary-foreground))',
                 },
-                secondary: {
-                    DEFAULT: 'hsl(var(--secondary))',
-                    foreground: 'hsl(var(--secondary-foreground))',
-                },
                 destructive: {
                     DEFAULT: 'hsl(var(--destructive))',
                     foreground: 'hsl(var(--destructive-foreground))',
@@ -56,8 +52,6 @@ export default {
                 },
                 brand: {
                     DEFAULT: 'hsl(var(--brand))',
-                    foreground: 'hsl(var(--brand-foreground))',
-                    hover: 'hsl(var(--brand-hover))',
                 },
             },
             borderRadius: {

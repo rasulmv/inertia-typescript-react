@@ -18,7 +18,7 @@ export default function DashboardLayout({
         <DashboardLayoutProvider>
             <Metadata metadata={metadata} />
 
-            <div className="relative h-screen overflow-hidden flex px-8 py-6 bg-secondary dark:bg-background">
+            <div className="relative h-screen overflow-hidden flex px-8 py-6 bg-accent dark:bg-background">
                 <Sidebar />
 
                 <div className="flex-1 flex flex-col">

@@ -10,13 +10,13 @@ import {
 import { Input } from '@/components/ui/input'
 import { useSubmit } from '@/hooks/use-submit'
 import DashboardLayout from '@/layouts/DashboardLayout'
-import AccountLayout from '@/layouts/dashboard/user/AccountLayout'
+import ProfileLayout from '@/layouts/dashboard/user/ProfileLayout'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { ReactNode, useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 
-export default function DashboardAccountPassword() {
+export default function UserProfilePassword() {
     const { submit } = useSubmit()
 
     const schema = z
@@ -51,12 +51,12 @@ export default function DashboardAccountPassword() {
         await submit({
             form,
             method: 'patch',
-            url: route('dashboard.account.password.update'),
+            url: route('dashboard.profile.password.update'),
             data,
         })
 
     return (
-        <AccountLayout title="Password" description="Change your password.">
+        <ProfileLayout title="Password" description="Change your password.">
             <Form {...form}>
                 <form
                     onSubmit={form.handleSubmit(onSubmit)}
@@ -136,11 +136,11 @@ export default function DashboardAccountPassword() {
                     </div>
                 </form>
             </Form>
-        </AccountLayout>
+        </ProfileLayout>
     )
 }
 
-DashboardAccountPassword.layout = (page: ReactNode) => (
+UserProfilePassword.layout = (page: ReactNode) => (
     <DashboardLayout
         metadata={{
             title: 'Profile Settings',

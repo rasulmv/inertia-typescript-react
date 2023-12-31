@@ -33,7 +33,7 @@ export default function MobileMenuFooterAuth() {
             <div className="flex flex-col mt-6">
                 <MobileMenuItem
                     label="Profile"
-                    href={route('dashboard.account.profile.edit')}
+                    href={route('dashboard.profile.edit')}
                 />
 
                 <MobileMenuItem

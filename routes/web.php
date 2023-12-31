@@ -1,7 +1,8 @@
 <?php
 
-use App\Http\Controllers\User\Account\PasswordController;
-use App\Http\Controllers\User\Account\ProfileController;
+use App\Http\Controllers\User\ProfileSettings\AccountController;
+use App\Http\Controllers\User\ProfileSettings\PasswordController;
+use App\Http\Controllers\User\ProfileSettings\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 /* Home */
@@ -16,15 +17,19 @@ Route::group([
 ], function () {
     Route::inertia('/', 'dashboard/index')->name('index');
 
-    // account
-    Route::prefix('account')->as('account.')->group(function () {
+    // profile settings
+    Route::prefix('profile')->as('profile.')->group(function () {
         // profile info
-        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::get('/', [ProfileController::class, 'edit'])->name('edit');
+        Route::patch('/', [ProfileController::class, 'update'])->name('update');
 
         // change password
         Route::get('/password', [PasswordController::class, 'edit'])->name('password.edit');
         Route::patch('/password', [PasswordController::class, 'update'])->name('password.update');
+
+        // manage account
+        Route::get('/account', [AccountController::class, 'edit'])->name('account.edit');
+        Route::patch('/account', [AccountController::class, 'destroy'])->name('account.delete');
     });
 });
 

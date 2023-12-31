@@ -51,10 +51,10 @@ export default function AuthDropdown() {
 
                 <DropdownMenuItem asChild>
                     <Link
-                        href={route('dashboard.account.profile.edit')}
+                        href={route('dashboard.profile.edit')}
                         className="flex items-center justify-between"
                     >
-                        <span>Account</span>
+                        <span>Profile</span>
 
                         <IconUser className="w-4 h-4" />
                     </Link>

@@ -15,7 +15,11 @@ export default function AuthCardFooter({
                     : 'Already have an account?'}
             </span>
 
-            <Button variant="link" asChild className="text-base font-normal">
+            <Button
+                variant="link"
+                asChild
+                className="text-base font-normal no-underline hover:underline text-brand"
+            >
                 <Link
                     href={
                         isLoginPage

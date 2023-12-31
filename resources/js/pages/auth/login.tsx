@@ -93,11 +93,12 @@ export default function Login() {
                                 <div className="flex items-center justify-between">
                                     <FormLabel>Password</FormLabel>
 
-                                    <Button variant="link" asChild>
-                                        <Link
-                                            href={route('password.request')}
-                                            className="text-sm text-brand"
-                                        >
+                                    <Button
+                                        variant="link"
+                                        asChild
+                                        className="text-brand no-underline hover:underline"
+                                    >
+                                        <Link href={route('password.request')}>
                                             Forgot password?
                                         </Link>
                                     </Button>
