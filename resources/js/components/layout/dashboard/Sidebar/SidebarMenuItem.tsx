@@ -1,5 +1,5 @@
-import { useDashboardLayoutContext } from '@/context/DashboardLayoutContext'
 import { cn } from '@/lib/utils'
+import { useDashboardLayoutStore } from '@/store/layouts/dashboard.store'
 import { InertiaLinkProps, Link } from '@inertiajs/react'
 
 export const SidebarMenuItem = ({
@@ -11,7 +11,9 @@ export const SidebarMenuItem = ({
     Icon: React.ElementType
     isActive: boolean
 }) => {
-    const { isSidebarExpanded } = useDashboardLayoutContext()
+    const isSidebarExpanded = useDashboardLayoutStore(
+        (s) => s.isSidebarExpanded,
+    )
 
     return (
         <Link

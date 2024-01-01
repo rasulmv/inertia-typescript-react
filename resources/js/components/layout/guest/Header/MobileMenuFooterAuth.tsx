@@ -1,7 +1,8 @@
+import MobileMenu from '@/components/common/MobileMenu'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import { Separator } from '@/components/ui/separator'
 import { getNameInitialsForAvatar } from '@/lib/utils'
 import { Link, usePage } from '@inertiajs/react'
-import { MobileMenuItem } from './MobileMenuItem'
 
 export default function MobileMenuFooterAuth() {
     const { user } = usePage().props
@@ -29,21 +30,42 @@ export default function MobileMenuFooterAuth() {
                 </div>
             </Link>
 
-            {/* auth user menu */}
-            <div className="flex flex-col mt-6">
-                <MobileMenuItem
-                    label="Profile"
-                    href={route('dashboard.profile.edit')}
-                />
+            <Separator className="mt-5" />
 
-                <MobileMenuItem
-                    label="Log out"
+            {/* auth user menu */}
+            <div className="flex flex-col mt-2">
+                <MobileMenu.Item
+                    href={route('dashboard.profile.edit')}
+                    className="text-base py-1"
+                >
+                    Profile
+                </MobileMenu.Item>
+
+                <MobileMenu.Item
+                    href={route('dashboard.profile.edit')}
+                    className="text-base py-1"
+                >
+                    My portfolio
+                </MobileMenu.Item>
+
+                <MobileMenu.Item
+                    href={route('dashboard.profile.edit')}
+                    className="text-base py-1"
+                >
+                    My something else
+                </MobileMenu.Item>
+
+                <Separator className="my-2" />
+
+                <MobileMenu.Item
                     href={route('logout')}
                     method="post"
                     as="button"
                     type="button"
-                    className="logout"
-                />
+                    className="text-base py-1"
+                >
+                    Log out
+                </MobileMenu.Item>
             </div>
         </>
     )

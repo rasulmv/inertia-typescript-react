@@ -1,18 +1,20 @@
 import { Button } from '@/components/ui/button'
-import { useHeaderContext } from '@/context/HeaderContext'
+import { useGuestLayoutStore } from '@/store/layouts/guest.store'
 import { Nullable } from '@/types'
 import { UserEntity } from '@/types/entities/user.entity'
 import { Link, usePage } from '@inertiajs/react'
 import { IconBrandGithub, IconMenu2 } from '@tabler/icons-react'
 import { Suspense, lazy } from 'react'
-import { ThemeSwitcher } from '../../../common/ThemeSwitcher'
+import { ThemeSwitcher } from '@/components/common/ThemeSwitcher'
 
-const AuthDropdown = lazy(() => import('./AuthDropdown'))
+const AuthDropdown = lazy(
+    () => import('@/components/layout/common/AuthDropdown'),
+)
 
 export const HeaderRight = () => {
     const { user } = usePage<{ user: Nullable<UserEntity> }>().props
 
-    const { setMobileMenuOpen } = useHeaderContext()
+    const setMobileMenuOpen = useGuestLayoutStore((s) => s.setMobileMenuOpen)
 
     return (
         <div className="flex items-center space-x-2">
@@ -36,8 +38,8 @@ export const HeaderRight = () => {
                 {user ? (
                     <AuthDropdown />
                 ) : (
-                    <div className="pl-1">
-                        <Button size="sm" asChild className="hidden sm:flex">
+                    <div className="pl-1 hidden sm:flex">
+                        <Button size="sm" asChild>
                             <Link href={route('login.create')}>Sign In</Link>
                         </Button>
                     </div>

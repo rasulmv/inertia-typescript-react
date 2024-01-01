@@ -45,7 +45,7 @@
 
         --border: 229 21% 90%;
         --input: 227 24% 85%;
-        --ring: var(--primary);
+        --ring: var(--primary) / 0.5;
 
         --radius: 0.6rem;
     }

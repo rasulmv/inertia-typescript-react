@@ -1,12 +1,28 @@
 import { Logo } from '@/components/common/Logo'
-import { useDashboardLayoutContext } from '@/context/DashboardLayoutContext'
-import { Link, usePage } from '@inertiajs/react'
-import { IconTableFilled, IconUserFilled } from '@tabler/icons-react'
-import { SidebarMenuItem } from './SidebarMenuItem'
+import { useDashboardLayoutStore } from '@/store/layouts/dashboard.store'
+import { Link } from '@inertiajs/react'
+import { useEffect } from 'react'
+// https://github.com/streamich/react-use/issues/2074#issuecomment-982044510
+import useMedia from 'react-use/lib/useMedia'
+import { SidebarInner } from './SidebarInner'
 
 export const Sidebar = () => {
-    const { component } = usePage()
-    const { isSidebarExpanded } = useDashboardLayoutContext()
+    const { isSidebarExpanded, setSidebarExpanded } = useDashboardLayoutStore(
+        (s) => ({
+            isSidebarExpanded: s.isSidebarExpanded,
+            setSidebarExpanded: s.setSidebarExpanded,
+        }),
+    )
+
+    // tailwind default LG breakpoint used
+    const isDesktop = useMedia('(min-width: 1024px)')
+
+    // force sidebar expanded state on mobile devices so that links are visible
+    useEffect(() => {
+        if (!isDesktop) {
+            setSidebarExpanded(true)
+        }
+    }, [isDesktop, setSidebarExpanded])
 
     return (
         <aside
@@ -15,8 +31,12 @@ export const Sidebar = () => {
         >
             {/* sidebar header */}
             <div className="py-6 px-8">
-                <Link href="/" className="flex items-center space-x-3">
-                    <Logo className="flex-shrink-0 w-6 h-6" />
+                <Link
+                    href="/"
+                    className="flex items-center space-x-3"
+                    aria-label="Visit homepage"
+                >
+                    <Logo className="flex-shrink-0" />
 
                     <span
                         className="text-lg font-semibold transition-opacity duration-300 ease-in-out whitespace-nowrap"
@@ -27,26 +47,7 @@ export const Sidebar = () => {
                 </Link>
             </div>
 
-            {/* sidebar body */}
-            <div className="h-full pt-5 px-5">
-                <div className="flex flex-col space-y-1.5">
-                    <SidebarMenuItem
-                        href={route('dashboard.index')}
-                        Icon={IconTableFilled}
-                        isActive={component === 'dashboard/index'}
-                    >
-                        Dashboard
-                    </SidebarMenuItem>
-
-                    <SidebarMenuItem
-                        href={route('dashboard.profile.edit')}
-                        Icon={IconUserFilled}
-                        isActive={component.startsWith('dashboard/profile')}
-                    >
-                        Profile
-                    </SidebarMenuItem>
-                </div>
-            </div>
+            <SidebarInner />
         </aside>
     )
 }
