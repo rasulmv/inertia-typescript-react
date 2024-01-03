@@ -1,9 +1,12 @@
+import { usePage } from '@inertiajs/react'
+import { IconTableFilled, IconUserFilled } from '@tabler/icons-react'
+import { ElementType } from 'react'
+
 type TRoute = {
     href: string
     label: string
-    // component path to check later on if route is active
-    // https://inertiajs.com/links#active-states
-    component: string
+    isActive: boolean
+    Icon?: ElementType
 }
 
 /*
@@ -11,16 +14,36 @@ type TRoute = {
  * Reason is to avoid duplicating same routes for "mobile" and "desktop" menus.
  */
 export const useRoutes = (): TRoute[] => {
+    const { component } = usePage()
+
+    // user dashboard routes
+    if (component.startsWith('dashboard/')) {
+        return [
+            {
+                href: route('dashboard.index'),
+                label: 'Dashboard',
+                isActive: component === 'dashboard/index',
+                Icon: IconTableFilled,
+            },
+            {
+                href: route('dashboard.profile.edit'),
+                label: 'Profile',
+                isActive: component.startsWith('dashboard/profile'),
+                Icon: IconUserFilled,
+            },
+        ]
+    }
+
     return [
         {
             href: route('homepage'),
             label: 'Home',
-            component: 'home/index',
+            isActive: component === 'home/index',
         },
         {
             href: route('about'),
             label: 'About',
-            component: 'home/about',
+            isActive: component === 'home/about',
         },
     ]
 }

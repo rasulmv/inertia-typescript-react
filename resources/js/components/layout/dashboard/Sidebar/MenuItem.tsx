@@ -2,7 +2,7 @@ import { cn } from '@/lib/utils'
 import { useDashboardLayoutStore } from '@/store/layouts/dashboard.store'
 import { InertiaLinkProps, Link } from '@inertiajs/react'
 
-export const SidebarMenuItem = ({
+export const MenuItem = ({
     Icon,
     children,
     isActive,

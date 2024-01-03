@@ -1,11 +1,10 @@
 /**
  * User and admin dashboard layouts.
  */
-import { Metadata } from '@/components/common/Metadata'
-import MobileMenu from '@/components/common/MobileMenu'
+import { Metadata } from '@/components/layout/common/Metadata'
+import { MobileMenu } from '@/components/layout/common/MobileMenu'
 import { Header } from '@/components/layout/dashboard/Header'
 import { Sidebar } from '@/components/layout/dashboard/Sidebar'
-import { SidebarInner } from '@/components/layout/dashboard/Sidebar/SidebarInner'
 import { ScrollArea } from '@/components/ui/scroll-area'
 import { Toaster } from '@/components/ui/sonner'
 import { useDashboardLayoutStore } from '@/store/layouts/dashboard.store'
@@ -33,14 +32,7 @@ export default function DashboardLayout({
                 <MobileMenu
                     isOpen={isMobileMenuOpen}
                     close={() => setMobileMenuOpen(false)}
-                >
-                    {/* padding left for visual align */}
-                    <MobileMenu.Header className="pl-[34px]" />
-
-                    <MobileMenu.Body className="p-0">
-                        <SidebarInner />
-                    </MobileMenu.Body>
-                </MobileMenu>
+                />
 
                 <div className="flex-1 flex flex-col">
                     <Header />

@@ -1,10 +1,10 @@
-import MobileMenu from '@/components/common/MobileMenu'
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import { Separator } from '@/components/ui/separator'
 import { getNameInitialsForAvatar } from '@/lib/utils'
 import { Link, usePage } from '@inertiajs/react'
+import { MenuItem } from '../MenuItem'
 
-export default function MobileMenuFooterAuth() {
+export default function AuthSection() {
     const { user } = usePage().props
 
     return (
@@ -34,30 +34,30 @@ export default function MobileMenuFooterAuth() {
 
             {/* auth user menu */}
             <div className="flex flex-col mt-2">
-                <MobileMenu.Item
+                <MenuItem
                     href={route('dashboard.profile.edit')}
                     className="text-base py-1"
                 >
                     Profile
-                </MobileMenu.Item>
+                </MenuItem>
 
-                <MobileMenu.Item
+                <MenuItem
                     href={route('dashboard.profile.edit')}
                     className="text-base py-1"
                 >
                     My portfolio
-                </MobileMenu.Item>
+                </MenuItem>
 
-                <MobileMenu.Item
+                <MenuItem
                     href={route('dashboard.profile.edit')}
                     className="text-base py-1"
                 >
                     My something else
-                </MobileMenu.Item>
+                </MenuItem>
 
                 <Separator className="my-2" />
 
-                <MobileMenu.Item
+                <MenuItem
                     href={route('logout')}
                     method="post"
                     as="button"
@@ -65,7 +65,7 @@ export default function MobileMenuFooterAuth() {
                     className="text-base py-1"
                 >
                     Log out
-                </MobileMenu.Item>
+                </MenuItem>
             </div>
         </>
     )
