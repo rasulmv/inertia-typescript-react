@@ -1,4 +1,5 @@
 import { create } from 'zustand'
+import { persist } from 'zustand/middleware'
 
 interface DashboardLayoutState {
     isMobileMenuOpen: boolean
@@ -8,10 +9,17 @@ interface DashboardLayoutState {
 }
 
 export const useDashboardLayoutStore = create<DashboardLayoutState>()(
-    (set) => ({
-        isMobileMenuOpen: false,
-        setMobileMenuOpen: (isMobileMenuOpen) => set({ isMobileMenuOpen }),
-        isSidebarExpanded: true,
-        setSidebarExpanded: (isSidebarExpanded) => set({ isSidebarExpanded }),
-    }),
+    persist(
+        (set) => ({
+            isMobileMenuOpen: false,
+            setMobileMenuOpen: (isMobileMenuOpen) => set({ isMobileMenuOpen }),
+            isSidebarExpanded: true,
+            setSidebarExpanded: (isSidebarExpanded) =>
+                set({ isSidebarExpanded }),
+        }),
+        {
+            name: 'is-sidebar-expanded',
+            partialize: (s) => ({ isSidebarExpanded: s.isSidebarExpanded }),
+        },
+    ),
 )

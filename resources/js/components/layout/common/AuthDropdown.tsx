@@ -18,8 +18,13 @@ export default function AuthDropdown() {
 
     return (
         <DropdownMenu open={isOpen} onOpenChange={(open) => setIsOpen(open)}>
-            <DropdownMenuTrigger asChild className="hidden sm:flex">
-                <Button size="icon" variant="ghost">
+            <DropdownMenuTrigger asChild>
+                <Button
+                    size="icon"
+                    variant="ghost"
+                    className="hidden sm:flex"
+                    aria-label="Toggle user dropdown menu"
+                >
                     <IconUser className="w-5 h-5" />
                 </Button>
             </DropdownMenuTrigger>
