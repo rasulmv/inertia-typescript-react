@@ -7,8 +7,6 @@ export type TMetadata = {
     description?: string
 }
 
-export type TAppSection = 'home' | 'auth' | 'dashboard'
-
 export interface User {
     id: number
     name: string

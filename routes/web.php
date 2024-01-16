@@ -28,7 +28,7 @@ Route::group([
         Route::patch('/password', [PasswordController::class, 'update'])->name('password.update');
 
         // manage account
-        Route::get('/account', [AccountController::class, 'edit'])->name('account.edit');
+        Route::get('/account', [AccountController::class, 'edit'])->name('account.edit')->middleware('password.confirm');
         Route::patch('/account', [AccountController::class, 'destroy'])->name('account.delete');
     });
 });
