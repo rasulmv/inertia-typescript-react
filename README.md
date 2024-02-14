@@ -36,4 +36,4 @@ This starter template provides a minimal starting point for building modern Lara
 Custom e-mail templates<br>
 Admin dashboard with data tables<br>
 ~~Modify color palette, add primary (brand) color that will be easy to switch~~<br>
-Setup [Deployer](https://deployer.org/) for deployment<br>
+~~Setup [Deployer](https://deployer.org/) for deployment<br>~~
