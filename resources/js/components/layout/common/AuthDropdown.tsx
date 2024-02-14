@@ -73,7 +73,7 @@ export default function AuthDropdown() {
                         method="post"
                         as="button"
                         type="button"
-                        className="w-full flex items-center justify-between text-destructive focus:text-destructive focus:bg-destructive/5"
+                        className="w-full flex items-center justify-between text-destructive-text focus:text-destructive-text focus:bg-destructive/5"
                     >
                         <span>Log out</span>
 

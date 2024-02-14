@@ -13,7 +13,7 @@ export const NavItem = ({
             className={clsx([
                 'justify-start',
                 isActive
-                    ? 'bg-brand/10 hover:bg-brand/10 text-brand hover:text-brand'
+                    ? '!text-primary-text !bg-primary-light'
                     : 'hover:bg-accent',
             ])}
         >

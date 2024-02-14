@@ -8,7 +8,7 @@ export const Footer = () => {
                         <a
                             target="_blank"
                             href="https://github.com/rismailov"
-                            className="text-foreground font-medium underline-offset-2 hover:underline"
+                            className="text-primary-text font-medium underline-offset-2 hover:underline"
                         >
                             rismailov
                         </a>
@@ -16,7 +16,7 @@ export const Footer = () => {
                         <a
                             target="_blank"
                             href="https://github.com/rismailov/inertia-typescript-react"
-                            className="text-foreground font-medium underline-offset-2 hover:underline"
+                            className="text-primary-text font-medium underline-offset-2 hover:underline"
                         >
                             Github
                         </a>

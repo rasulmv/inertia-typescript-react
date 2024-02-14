@@ -96,7 +96,7 @@ export default function Login() {
                                     <Button
                                         variant="link"
                                         asChild
-                                        className="text-brand no-underline hover:underline"
+                                        className="text-primary-text no-underline hover:underline"
                                     >
                                         <Link href={route('password.request')}>
                                             Forgot password?

@@ -18,7 +18,7 @@ export default function AuthCardFooter({
             <Button
                 variant="link"
                 asChild
-                className="text-base font-normal no-underline hover:underline text-brand"
+                className="text-base font-normal no-underline hover:underline text-primary-text"
             >
                 <Link
                     href={

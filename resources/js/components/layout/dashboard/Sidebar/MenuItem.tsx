@@ -22,7 +22,7 @@ export const MenuItem = ({
                 'flex items-center py-2.5 px-4 font-medium rounded-lg',
                 rest.className,
                 isActive
-                    ? 'bg-brand text-background'
+                    ? 'bg-primary-light text-primary-text'
                     : 'hover:bg-accent text-muted-foreground',
             )}
         >

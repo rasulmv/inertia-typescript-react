@@ -2,79 +2,83 @@
 @tailwind components;
 @tailwind utilities;
 
-/* website used to conveniently copy color codes: https://ui-colorgen.vercel.app/ */
+/* site to copy hsl values from original tailwind colors: https://ui-colorgen.vercel.app/ */
+/* site to generate in-between colors (shades, tints): https://noeldelgado.github.io/shadowlord/#09090b */
+
+/* local css variables for branding colors */
 @layer base {
     :root {
-        --brand: 238.7 83.5% 66.7%;
+        --brand: 221.2 83.2% 53.3%;
+        --brand-text: 224.3 76.3% 48%;
     }
 
     .dark {
-        --brand: 229.7 93.5% 81.8%;
+        --brand: 221.2 83.2% 53.3%;
+        --brand-text: 213.1 93.9% 67.8%;
+    }
+}
 
-        --bg-primary: 225 7% 11%;
-        --bg-secondary: 228 7% 14%;
-        --bg-tertiary: 220 7% 17%;
+/* custom css variables that are not included in shadcn/ui */
+@layer base {
+    :root {
+        --primary-light: var(--brand) / 0.1;
+        --primary-text: var(--brand-text);
+        --destructive-text: var(--destructive);
+        --success: 142.1 76.2% 36.3%;
+    }
+
+    .dark {
+        --primary-light: var(--brand) / 0.15;
+        --primary-text: var(--brand-text);
+        --destructive-text: 0 90.6% 70.8%;
+        --success: 141.9 69.2% 58%;
     }
 }
 
 @layer base {
     :root {
-        --background: 240 7% 97%;
-        --foreground: 220 12% 5%;
-
-        --card: 240 7% 97%;
-        --card-foreground: var(--foreground);
-
-        --popover: 240 7% 97%;
-        --popover-foreground: var(--foreground);
-
-        --primary: 228 10% 20%;
+        --background: 0 0% 100%;
+        --foreground: 240 10% 3.9%;
+        --card: 0 0% 100%;
+        --card-foreground: 240 10% 3.9%;
+        --popover: 0 0% 100%;
+        --popover-foreground: 240 10% 3.9%;
+        --primary: var(--brand);
         --primary-foreground: 0 0% 98%;
-
-        --secondary: 231 25% 90%;
-        --secondary-foreground: var(--foreground);
-
-        --muted: 228 16% 94%;
-        --muted-foreground: 228 13% 40%;
-
-        --accent: 228 16% 94%;
-        --accent-foreground: var(--foreground);
-
-        --destructive: 0 72.2% 50.6%;
+        --secondary: 240 4.8% 95.9%;
+        --secondary-foreground: 240 5.9% 10%;
+        --muted: 240 4.8% 95.9%;
+        --muted-foreground: 240 3.8% 46.1%;
+        --accent: 240 4.8% 95.9%;
+        --accent-foreground: 240 5.9% 10%;
+        --destructive: 0 84.2% 60.2%;
         --destructive-foreground: 0 0% 98%;
-
-        --border: 229 21% 90%;
-        --input: 227 24% 85%;
-        --ring: var(--primary) / 0.5;
-
-        --radius: 0.6rem;
+        --border: 240 5.9% 90%;
+        --input: 240 5.9% 90%;
+        --ring: var(--brand) / 0.75;
+        --radius: 0.5rem;
     }
 
     .dark {
-        --background: var(--bg-primary);
-        --foreground: 231 14% 90%;
-
-        --card: var(--bg-secondary);
+        --background: 240 10% 3.9%;
+        --foreground: 240 5.9% 90%;
+        --card: 240 7% 6%;
         --card-foreground: var(--foreground);
-
-        --popover: var(--bg-secondary);
+        --popover: var(--background);
         --popover-foreground: var(--foreground);
-
         --primary: var(--brand);
-        --primary-foreground: var(--background);
-
-        --muted: var(--accent);
-        --muted-foreground: 229 8% 60%;
-
-        --accent: var(--bg-tertiary);
-        --accent-foreground: var(--foreground);
-
-        --destructive: 0 90.6% 70.8%;
-        --destructive-foreground: var(--background);
-
-        --border: 227 10% 17%;
-        --input: 226 10% 25%;
-        --ring: 228 83% 79% / 0.8;
+        --primary-foreground: 240 4.8% 95.9%;
+        --secondary: 240 3.7% 15.9%;
+        --secondary-foreground: 0 0% 98%;
+        --muted: 240 3.7% 15.9%;
+        --muted-foreground: 240 3% 52%;
+        --accent: 240 5% 9%;
+        --accent-foreground: 0 0% 98%;
+        --destructive: 0 72.2% 50.6%;
+        --destructive-foreground: 240 4.8% 95.9%;
+        --border: 240 3.7% 15.9%;
+        --input: 240 3.7% 15.9%;
+        --ring: var(--brand);
     }
 }
 
