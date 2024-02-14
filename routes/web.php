@@ -11,9 +11,9 @@ Route::inertia('/about', 'home/about')->name('about');
 
 /* User Dashboard */
 Route::group([
-    'prefix'     => 'dashboard',
+    'prefix' => 'dashboard',
     'middleware' => ['auth', 'verified'],
-    'as'         => 'dashboard.',
+    'as' => 'dashboard.',
 ], function () {
     Route::inertia('/', 'dashboard/index')->name('index');
 

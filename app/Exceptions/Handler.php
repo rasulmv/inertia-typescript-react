@@ -35,19 +35,19 @@ class Handler extends ExceptionHandler
      */
     protected $messages = [
         500 => [
-            'title'       => 'Something went wrong',
+            'title' => 'Something went wrong',
             'description' => "Our servers could not handle your request. Don't worry, our development team was already notified. Try refreshing the page.",
         ],
         503 => [
-            'title'       => 'Service unavailable',
+            'title' => 'Service unavailable',
             'description' => "Don't worry, our development team is already working on a fix. Refresh the page or try again later.",
         ],
         404 => [
-            'title'       => 'Page not found',
+            'title' => 'Page not found',
             'description' => "The page you're looking for doesn't exist. You may have misstyped the address or the page may have moved.",
         ],
         403 => [
-            'title'       => 'Not authorized',
+            'title' => 'Not authorized',
             'description' => "Looks like you don't have permission to access this page. Please contact the website administrator.",
         ],
     ];
@@ -71,7 +71,7 @@ class Handler extends ExceptionHandler
         }
 
         return inertia('error', [
-            'status'  => $status,
+            'status' => $status,
             'message' => $this->messages[$status],
         ])
             ->toResponse($request)
